@@ -60,7 +60,25 @@ Success criteria:
 - Playwright screenshot render succeeds.
 - GitHub Pages deploys through CI/CD.
 
-## Phase 3: Real Backend Pilot
+## Phase 3: Enterprise India Readiness
+
+Status: frontend enterprise layer completed in this iteration; backend pilot remains planned.
+
+Completed:
+
+- Enterprise India page for district/state rollout story.
+- Role-based workflow model for PHC, MO, district store, CMO/DPM and state NHM users.
+- India public-health integration map: ABDM/HFR-style facility identity, e-Aushadhi/DVDMS, HMIS, eSanjeevani and IPHS 2022.
+- SLA governance model and audit log surface.
+- Procurement-ready state rollout framing.
+
+Next backend build:
+
+- Implement real role-based auth and audit persistence.
+- Integrate stock import adapters and district master data.
+- Add state-level benchmark dashboards.
+
+## Phase 4: Real Backend Pilot
 
 Status: planned.
 
@@ -73,7 +91,7 @@ Build:
 - WhatsApp/IVR adapter mock, then production provider integration.
 - Role-based views for PHC, MO, district store and CMO.
 
-## Phase 4: District Pilot Readiness
+## Phase 5: District Pilot Readiness
 
 Status: planned.
 

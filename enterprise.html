@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>PulseGrid | Enterprise India</title><link rel="stylesheet" href="styles.css" /><link rel="icon" href="favicon.svg" type="image/svg+xml" /></head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PulseGrid home"><span class="brand-mark">PG</span><span><strong>PulseGrid</strong><small>Enterprise India</small></span></a>
+      <nav aria-label="Main navigation"><a href="dashboard.html">Dashboard</a><a href="intake.html">AI Intake</a><a href="forecasts.html">Forecasts</a><a href="redistribution.html">Redistribution</a><a href="facilities.html">Facilities</a><a href="enterprise.html">Enterprise</a><a href="architecture.html">Architecture</a><a href="submission.html">Submission</a></nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">For India, by India</p>
+        <h1>Enterprise health operations for districts, states and NHM missions.</h1>
+        <p class="lead">PulseGrid is designed as a decision-support layer over Indian public-health rails: PHC/CHC workflows, NHM district administration, Ayushman Bharat facility identity, e-Aushadhi/DVDMS stock movement and HMIS reporting.</p>
+      </section>
+
+      <section class="ops-grid section-band">
+        <article class="metric-card"><span>Rollout unit</span><strong>District</strong><p>Start with 30-50 facilities, then scale block by block.</p></article>
+        <article class="metric-card"><span>Users</span><strong>6 roles</strong><p>PHC, MO, CHC, store, CMO/DPM and state monitor.</p></article>
+        <article class="metric-card warn"><span>Connectivity</span><strong>2G</strong><p>Store-and-forward voice, IVR and compressed register images.</p></article>
+        <article class="metric-card"><span>Privacy</span><strong>No PII</strong><p>Aggregate operational signals only for this use case.</p></article>
+      </section>
+
+      <section class="section-band enterprise-grid">
+        <article class="panel">
+          <p class="eyebrow">Role-based operations</p>
+          <h2>Built for real government workflows</h2>
+          <div class="role-table">
+            <div><b>PHC staff</b><span>Voice note, register photo, IVR confirmation.</span></div>
+            <div><b>Medical Officer</b><span>Approve indent, verify facility-level anomalies.</span></div>
+            <div><b>District store</b><span>Release stock, approve transfer, track batch/expiry.</span></div>
+            <div><b>CMO/DPM</b><span>Monitor intervention queue, SLA breach and under-resourced centres.</span></div>
+            <div><b>State NHM</b><span>Compare districts, procurement gaps and IPHS readiness.</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <p class="eyebrow">India-stack integrations</p>
+          <h2>Do not replace existing systems</h2>
+          <ul class="plain-list">
+            <li>ABDM/HFR-style facility identity for centre mapping.</li>
+            <li>e-Aushadhi/DVDMS adapter for stock, issues, indents and batches.</li>
+            <li>HMIS aggregate reconciliation for official reporting.</li>
+            <li>eSanjeevani service signals for continuity checks.</li>
+            <li>IPHS 2022 norms for facility readiness and score context.</li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <p class="eyebrow">Governance</p>
+          <h2>Audit, approvals and accountability</h2>
+          <div class="audit-log">
+            <div><span>09:10</span><b>PHC Bhairavpur voice note processed</b><small>AI extraction confidence 94%</small></div>
+            <div><span>09:12</span><b>Stock-out warning generated</b><small>ORS 6 days cover vs 21 day lead time</small></div>
+            <div><span>09:15</span><b>Transfer order drafted</b><small>Human approval required</small></div>
+            <div><span>09:28</span><b>CMO escalation prepared</b><small>Upstream RDT shortage tagged as systemic</small></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <p class="eyebrow">SLA command centre</p>
+          <h2>District intervention rules</h2>
+          <div class="sla-grid">
+            <div><strong>0-6h</strong><span>PHC verifies stock/photo if confidence below threshold.</span></div>
+            <div><strong>6-24h</strong><span>MO approves transfer or escalates upstream failure.</span></div>
+            <div><strong>24-48h</strong><span>District store releases batch or records non-availability.</span></div>
+            <div><strong>48h+</strong><span>CMO/DPM intervention and state-level visibility.</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-band">
+        <div class="section-title"><p class="eyebrow">Procurement-ready story</p><h2>What a state health department can buy after the pilot.</h2></div>
+        <div class="submit-grid">
+          <article><span>01</span><h3>Decision support layer</h3><p>Sits over existing systems and reduces operational blindness without forcing new data entry.</p></article>
+          <article><span>02</span><h3>District pilot pack</h3><p>Onboarding, facility master, item master, route graph, dashboards and voice/OCR training set.</p></article>
+          <article><span>03</span><h3>State rollout</h3><p>District benchmarks, procurement bottleneck visibility and IPHS readiness monitoring.</p></article>
+          <article><span>04</span><h3>Measured outcomes</h3><p>Stock-out days, transfer turnaround, test downtime, avoidable referrals and SLA closure.</p></article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

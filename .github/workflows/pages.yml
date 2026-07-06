@@ -41,6 +41,7 @@ jobs:
           test -f forecasts.html
           test -f redistribution.html
           test -f facilities.html
+          test -f enterprise.html
           test -f architecture.html
           test -f submission.html
           test -f styles.css

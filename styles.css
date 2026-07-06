@@ -575,6 +575,56 @@ progress::-webkit-progress-value {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.enterprise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.role-table,
+.audit-log,
+.sla-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.role-table div,
+.audit-log div,
+.sla-grid div {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.85rem;
+  background: #f9fcfb;
+}
+
+.role-table b,
+.audit-log b,
+.sla-grid strong {
+  display: block;
+  color: var(--green);
+}
+
+.role-table span,
+.audit-log small,
+.sla-grid span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.audit-log span {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.sla-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .forecast-layout {
   display: grid;
   grid-template-columns: minmax(320px, 1.35fr) repeat(2, minmax(220px, 0.7fr));
@@ -797,6 +847,7 @@ footer a {
   .submit-grid,
   .ops-grid,
   .forecast-layout,
+  .enterprise-grid,
   .flow-grid,
   .deck-grid,
   .check-grid {
@@ -828,6 +879,7 @@ footer a {
   .submit-grid,
   .ops-grid,
   .forecast-layout,
+  .enterprise-grid,
   .form-grid,
   .architecture-form-grid,
   .flow-grid,
@@ -847,6 +899,10 @@ footer a {
   }
 
   .transfer-line {
+    grid-template-columns: 1fr;
+  }
+
+  .sla-grid {
     grid-template-columns: 1fr;
   }
 

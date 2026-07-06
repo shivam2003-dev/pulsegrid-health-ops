@@ -10,7 +10,7 @@ https://shivam2003-dev.github.io/pulsegrid-health-ops/
 
 ## Submission Package
 
-- Working prototype: `index.html`, `dashboard.html`, `intake.html`, `forecasts.html`, `redistribution.html`, `facilities.html`, `architecture.html`, `submission.html`, `styles.css`, `app.js`
+- Working prototype: `index.html`, `dashboard.html`, `intake.html`, `forecasts.html`, `redistribution.html`, `facilities.html`, `enterprise.html`, `architecture.html`, `submission.html`, `styles.css`, `app.js`
 - Code repository: public GitHub repo with setup and CI/CD
 - Pitch deck: `PITCH_DECK.md`
 - Project write-up: `PROJECT_WRITEUP.md`
@@ -41,7 +41,8 @@ If that port is occupied, use any free port, for example `python3 -m http.server
 4. Review the generated redistribution order in `redistribution.html`.
 5. Review forecasting logic in `forecasts.html`.
 6. Review facility attribution in `facilities.html`.
-7. Validate the embedded hand-in form in `submission.html`.
+7. Review state/district enterprise readiness in `enterprise.html`.
+8. Validate the embedded hand-in form in `submission.html`.
 
 ## CI/CD
 

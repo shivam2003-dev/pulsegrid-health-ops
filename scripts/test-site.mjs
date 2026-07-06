@@ -9,6 +9,7 @@ const requiredPages = [
   "forecasts.html",
   "redistribution.html",
   "facilities.html",
+  "enterprise.html",
   "architecture.html",
   "submission.html",
 ];
