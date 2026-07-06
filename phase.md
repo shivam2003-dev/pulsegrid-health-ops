@@ -67,6 +67,7 @@ Status: frontend enterprise layer completed in this iteration; backend pilot rem
 Completed:
 
 - Enterprise India page for district/state rollout story.
+- Research-backed evidence page and `RESEARCH_SURVEY.md`.
 - Role-based workflow model for PHC, MO, district store, CMO/DPM and state NHM users.
 - India public-health integration map: ABDM/HFR-style facility identity, e-Aushadhi/DVDMS, HMIS, eSanjeevani and IPHS 2022.
 - SLA governance model and audit log surface.

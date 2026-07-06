@@ -38,14 +38,20 @@ jobs:
           test -f index.html
           test -f dashboard.html
           test -f intake.html
+          test -f inventory.html
+          test -f orders.html
           test -f forecasts.html
           test -f redistribution.html
           test -f facilities.html
           test -f enterprise.html
+          test -f research.html
+          test -f admin.html
           test -f architecture.html
           test -f submission.html
           test -f styles.css
           test -f app.js
+          test -f data.js
+          test -f RESEARCH_SURVEY.md
           test -f phase.md
           test -f README.md
           test -f SOLUTION.md

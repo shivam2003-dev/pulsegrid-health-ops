@@ -10,12 +10,13 @@ https://shivam2003-dev.github.io/pulsegrid-health-ops/
 
 ## Submission Package
 
-- Working prototype: `index.html`, `dashboard.html`, `intake.html`, `forecasts.html`, `redistribution.html`, `facilities.html`, `enterprise.html`, `architecture.html`, `submission.html`, `styles.css`, `app.js`
+- Working prototype: `index.html`, `dashboard.html`, `intake.html`, `inventory.html`, `orders.html`, `forecasts.html`, `redistribution.html`, `facilities.html`, `enterprise.html`, `research.html`, `admin.html`, `architecture.html`, `submission.html`, `styles.css`, `app.js`, `data.js`
 - Code repository: public GitHub repo with setup and CI/CD
 - Pitch deck: `PITCH_DECK.md`
 - Project write-up: `PROJECT_WRITEUP.md`
 - Full blueprint: `SOLUTION.md`
 - Selected-round roadmap: `phase.md`
+- Research survey: `RESEARCH_SURVEY.md`
 
 ## Run Locally
 
@@ -42,7 +43,8 @@ If that port is occupied, use any free port, for example `python3 -m http.server
 5. Review forecasting logic in `forecasts.html`.
 6. Review facility attribution in `facilities.html`.
 7. Review state/district enterprise readiness in `enterprise.html`.
-8. Validate the embedded hand-in form in `submission.html`.
+8. Review the research-backed design in `research.html`.
+9. Validate the embedded hand-in form in `submission.html`.
 
 ## CI/CD
 

@@ -6,10 +6,14 @@ const requiredPages = [
   "index.html",
   "dashboard.html",
   "intake.html",
+  "inventory.html",
+  "orders.html",
   "forecasts.html",
   "redistribution.html",
   "facilities.html",
   "enterprise.html",
+  "research.html",
+  "admin.html",
   "architecture.html",
   "submission.html",
 ];
@@ -57,6 +61,9 @@ for (const file of htmlPages) {
   const html = await readFile(path.join(root, file), "utf8");
   if (!html.includes('href="styles.css"')) {
     throw new Error(`${file} does not include shared stylesheet`);
+  }
+  if (["inventory.html", "orders.html", "admin.html"].includes(file) && !html.includes('src="data.js"')) {
+    throw new Error(`${file} does not include shared data model`);
   }
   for (const href of hrefs(html)) {
     if (href.startsWith("#") || href === "styles.css") continue;
