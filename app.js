@@ -26,60 +26,60 @@ const on = (selector, event, handler) => {
 const data = window.PULSEGRID || {};
 const tourSteps = {
   "index.html": [
-    { target: ".hero", title: "PulseGrid overview", body: "Start here: this is the national/district health ops story and the entry point into the product." },
-    { target: ".hero-actions", title: "Choose a workflow", body: "Open AI Intake to run the voice-note demo, or jump to the district dashboard." },
-    { target: ".prototype-grid", title: "Working prototype", body: "This embedded flow shows voice capture, warnings, redistribution and CMO briefing in one place." },
-    { target: "#webform", title: "Submission webform", body: "The full hand-in content is embedded here, so judges do not need to leave the website." },
+    { target: ".hero", title: "Start with the district problem", body: "This first screen frames PulseGrid as a live PHC/CHC operations layer: stock, footfall, beds, attendance, tests and district action in one system." },
+    { target: ".hero-actions", title: "Run the demo path", body: "Use AI Intake for the Hindi or Marathi voice-note flow, or open the dashboard to see the CMO view of risks and transfers." },
+    { target: ".prototype-grid", title: "Follow the operating loop", body: "These cards show the end-to-end workflow judges should remember: passive capture, lead-time warning, redistribution recommendation and intervention brief." },
+    { target: "#webform", title: "Everything stays on this site", body: "The submission content is embedded as a webform-style page, so the project write-up, prototype and architecture are visible without redirecting to GitHub." },
   ],
   "dashboard.html": [
-    { target: ".ops-grid", title: "District KPIs", body: "Track monitored centres, stock risks, bed pressure and signal freshness at district level." },
-    { target: ".large-map", title: "Transfer graph", body: "The route graph shows which facilities can donate stock and which are at risk." },
-    { target: ".warning-list", title: "Intervention queue", body: "CMO and district store teams act from this queue before stock-outs happen." },
-    { target: ".copilot-panel", title: "CMO briefing", body: "The copilot explains what needs action and whether the root cause is local or upstream." },
+    { target: ".ops-grid", title: "Read district health in four signals", body: "The top row gives a CMO a quick answer: how many centres are monitored, where stock risk is rising, whether beds are tight and whether data is fresh." },
+    { target: ".large-map", title: "See the district as a transfer network", body: "The map is a graph view: donor facilities, risk facilities and routes that can move medicines before emergency indents are needed." },
+    { target: ".warning-list", title: "Act from the intervention queue", body: "This list is sorted for operations, not reporting. It shows what to approve, who owns it and what failure it prevents." },
+    { target: ".copilot-panel", title: "Use the CMO-ready brief", body: "The copilot summarizes the evidence and separates local execution issues from upstream shortages so centres are not unfairly blamed." },
   ],
   "intake.html": [
-    { target: ".voice-panel", title: "Passive AI capture", body: "Paste or use the sample Hindi/Marathi PHC update. No new MIS data entry is required." },
-    { target: "#processVoice", title: "Process voice note", body: "Click this to convert voice text into stock, footfall and test signals." },
-    { target: "#aiTrace", title: "AI trace", body: "After processing, the system explains extraction, anomaly and privacy guardrails." },
-    { target: "#transferCard", title: "Generated action", body: "The AI flow ends with a draft action that still requires human approval." },
+    { target: ".voice-panel", title: "Capture without new form filling", body: "This is the adoption-critical flow: a PHC worker sends a Hindi or Marathi update as voice/text, and PulseGrid extracts operational signals." },
+    { target: "#processVoice", title: "Turn speech into facility data", body: "Click Process to simulate LLM extraction of stock, footfall, bed, attendance and test availability updates from one low-friction message." },
+    { target: "#aiTrace", title: "Inspect the AI trace", body: "The trace shows what was extracted, what was flagged as anomalous and why no patient-level PII is needed for this use case." },
+    { target: "#transferCard", title: "End with a human-approved action", body: "The flow produces a draft transfer recommendation and escalation path; the system recommends, but district staff approve." },
   ],
   "inventory.html": [
-    { target: ".toolbar", title: "Inventory controls", body: "Search items and generate a critical indent pack for MO/store approval." },
-    { target: ".table-wrap", title: "Lead-time ledger", body: "Each row shows stock, demand, lead time, buffer gap, expiry and status." },
+    { target: ".toolbar", title: "Find risk and prepare approval", body: "Search by item or facility, then generate an indent pack for the Medical Officer and district store rather than making staff re-enter a form." },
+    { target: ".table-wrap", title: "Lead-time-aware stock view", body: "Each row compares stock on hand with forecast demand, procurement lead time, buffer need, expiry and storage constraints." },
   ],
   "orders.html": [
-    { target: ".order-board", title: "Transfer workflow", body: "Each card is a transfer order with source, destination, item, route, vehicle and impact." },
-    { target: ".approve-inline", title: "Advance workflow", body: "Click to simulate an approval step moving forward." },
+    { target: ".order-board", title: "Move from recommendation to order", body: "Each card is an actionable transfer order with source, destination, item, route, vehicle, owner and expected stock-out days avoided." },
+    { target: ".approve-inline", title: "Simulate the approval chain", body: "Click the approval control to show how a recommendation moves through MO, store and CMO review without becoming an automatic black box." },
   ],
   "forecasts.html": [
-    { target: ".forecast-main", title: "Demand forecast", body: "The forecast combines medicine demand, lead time and censored stock-out history." },
-    { target: ".forecast-layout", title: "Model selection", body: "Different data quality gets different models: quantile GBM, seasonal baseline or Croston/TSB." },
+    { target: ".forecast-main", title: "Forecast what procurement must cover", body: "The forecast is built around government lead times, stock-out censoring and seasonal disease signals, not only last week's consumption." },
+    { target: ".forecast-layout", title: "Use simple models where data is weak", body: "PulseGrid chooses quantile boosting, seasonal baselines or Croston/TSB depending on data quality, so cold-start PHCs still get usable warnings." },
   ],
   "facilities.html": [
-    { target: ".score-panel", title: "Fair scoring", body: "The centre score separates stock, service continuity, tests and upstream dependency." },
-    { target: ".copilot-panel", title: "Attribution", body: "PulseGrid flags centres for support without punishing them for upstream failures." },
+    { target: ".score-panel", title: "Score centres without hiding causes", body: "The score breaks down stock, service continuity, beds, tests and signal freshness so the district sees the exact weak point." },
+    { target: ".copilot-panel", title: "Do not punish upstream failures", body: "Attribution tags separate facility action gaps from vacancies, supply failures and district-store shortages before a centre is marked underperforming." },
   ],
   "enterprise.html": [
-    { target: ".ops-grid", title: "Enterprise rollout", body: "This is the district-to-state operating model for India-scale deployment." },
-    { target: ".role-table", title: "Role-based workflows", body: "PHC, MO, store, CMO and State NHM users each get their own operating scope." },
-    { target: ".audit-log", title: "Audit trail", body: "Every AI recommendation and human approval must be traceable in production." },
+    { target: ".ops-grid", title: "Roll out district-first, then state-wide", body: "The deployment model starts with one district's PHCs and CHCs, then scales through adapters, role scopes and common health-facility masters." },
+    { target: ".role-table", title: "Match government operating roles", body: "PHC staff, MOs, district stores, CMOs and State NHM teams get different views and permissions aligned to their real responsibilities." },
+    { target: ".audit-log", title: "Keep every AI action auditable", body: "Production use needs traceable recommendations, approvals, overrides and data sources so officials can trust the system." },
   ],
   "research.html": [
-    { target: ".research-grid", title: "Research findings", body: "This board converts survey and official-source findings into product decisions." },
-    { target: ".source-list", title: "Evidence base", body: "The source set covers LMIC stock-outs, supply-chain integration, forecasting, Indian rails and privacy." },
+    { target: ".research-grid", title: "Connect research to build decisions", body: "Each research card explains why the product favors passive capture, lead-time warnings, redistribution and transparent attribution." },
+    { target: ".source-list", title: "Show the evidence base", body: "The source list ties the prototype to LMIC stock-out studies, Indian government rails, IPHS norms and DPDP privacy requirements." },
   ],
   "admin.html": [
-    { target: "#roleMatrix", title: "RBAC matrix", body: "Enterprise deployment needs clear roles and access boundaries." },
-    { target: "#integrationList", title: "Integration status", body: "Track e-Aushadhi, HMIS, ABDM/HFR, eSanjeevani and WhatsApp/IVR readiness." },
-    { target: "#auditRows", title: "Governance log", body: "Auditable operations make AI recommendations acceptable for government workflows." },
+    { target: "#roleMatrix", title: "Review access by role", body: "The RBAC matrix shows who can view, approve, override or administer operational decisions in a district deployment." },
+    { target: "#integrationList", title: "Track real integration readiness", body: "This table keeps e-Aushadhi, HMIS, ABDM/HFR, eSanjeevani and WhatsApp/IVR adapters visible with owner and risk." },
+    { target: "#auditRows", title: "Prove governance after every action", body: "The audit log records AI extraction, warning generation, recommendation and human approval events for administrative review." },
   ],
   "architecture.html": [
-    { target: ".architecture-grid", title: "Backend path", body: "This shows how the static demo becomes Cloud Run, FastAPI, PostGIS and Pub/Sub services." },
-    { target: ".code-block", title: "Secret handling", body: "API keys are environment-only and never committed to the repository." },
+    { target: ".architecture-grid", title: "Map the prototype to production services", body: "The architecture shows how the static demo becomes a Cloud Run or Kubernetes service layer with APIs, queues, storage and analytics." },
+    { target: ".code-block", title: "Keep secrets out of the repository", body: "API keys and provider credentials belong in environment variables or secret managers; the repository only documents the contract." },
   ],
   "submission.html": [
-    { target: ".submission-form", title: "Embedded hand-in", body: "The full submission is a webform inside the app." },
-    { target: "#validateSubmission", title: "Validate package", body: "Click this to show the hand-in checklist is complete." },
+    { target: ".submission-form", title: "Submit from inside the app", body: "The project write-up is presented as a webform-style hand-in page with prototype, repository, pitch and architecture details in one place." },
+    { target: "#validateSubmission", title: "Validate the hand-in package", body: "Click this to confirm the required prototype, repo, pitch, write-up, architecture and CI/CD evidence are included." },
   ],
 };
 
@@ -249,27 +249,36 @@ function buildTour() {
   const start = document.createElement("button");
   start.type = "button";
   start.className = "tour-start";
-  start.textContent = "Start tour";
+  start.textContent = "Guide";
+  start.setAttribute("aria-label", "Open guided tour");
   document.body.appendChild(start);
 
   const overlay = document.createElement("div");
   overlay.className = "tour-overlay";
   overlay.innerHTML = `
-    <div class="tour-scrim"></div>
-    <div class="tour-popover" role="dialog" aria-live="polite">
-      <p class="eyebrow">Guided tour</p>
-      <h2 id="tourTitle"></h2>
-      <p id="tourBody"></p>
-      <div class="tour-progress" id="tourProgress"></div>
+    <div class="tour-panel" role="dialog" aria-live="polite" aria-label="Guided tour">
+      <div class="tour-copy">
+        <p class="eyebrow">Guided tour</p>
+        <h2 id="tourTitle"></h2>
+        <p id="tourBody"></p>
+      </div>
+      <div class="tour-side">
+        <div class="tour-progress" id="tourProgress"></div>
+        <div class="tour-dots" id="tourDots"></div>
+        <div class="tour-hint">Use Next step to continue.</div>
+      </div>
       <div class="tour-actions">
         <button type="button" class="secondary" id="tourBack">Back</button>
-        <button type="button" id="tourNext">Next</button>
         <button type="button" class="secondary" id="tourSkip">Skip</button>
+        <button type="button" class="tour-primary" id="tourNext">Next step</button>
       </div>
     </div>
   `;
   document.body.appendChild(overlay);
-  const popover = overlay.querySelector(".tour-popover");
+  const nextButton = overlay.querySelector("#tourNext");
+  const backButton = overlay.querySelector("#tourBack");
+  const skipButton = overlay.querySelector("#tourSkip");
+  let lastFocusedElement = null;
 
   function clearHighlights() {
     document.querySelectorAll(".tour-target").forEach((node) => node.classList.remove("tour-target"));
@@ -282,38 +291,54 @@ function buildTour() {
     const target = document.querySelector(step.target) || document.querySelector("main");
     target.classList.add("tour-target");
     target.scrollIntoView({ behavior: "smooth", block: "center" });
-    const rect = target.getBoundingClientRect();
-    popover.style.top = `${Math.max(80, rect.bottom + window.scrollY + 14)}px`;
-    popover.style.left = `${Math.min(window.innerWidth - 380, Math.max(16, rect.left + window.scrollX))}px`;
     setText("#tourTitle", step.title);
     setText("#tourBody", step.body);
-    setText("#tourProgress", `${index + 1} of ${steps.length}`);
-    setText("#tourNext", index === steps.length - 1 ? "Finish" : "Next");
-    $("#tourBack").disabled = index === 0;
+    setText("#tourProgress", `Step ${index + 1} of ${steps.length}`);
+    setText("#tourNext", index === steps.length - 1 ? "Finish tour" : "Next step");
+    setHtml("#tourDots", steps.map((_, stepIndex) => `<span class="${stepIndex === index ? "active" : ""}"></span>`).join(""));
+    backButton.disabled = index === 0;
   }
 
   function openTour() {
+    lastFocusedElement = document.activeElement;
+    start.hidden = true;
     overlay.classList.add("open");
     showStep(0);
+    window.setTimeout(() => nextButton.focus(), 100);
   }
 
   function closeTour() {
     overlay.classList.remove("open");
+    start.hidden = false;
     clearHighlights();
     window.localStorage.setItem("pulsegridTourSeen", "true");
+    if (lastFocusedElement && lastFocusedElement.focus) lastFocusedElement.focus();
   }
 
   start.addEventListener("click", openTour);
-  overlay.querySelector("#tourBack").addEventListener("click", () => showStep(index - 1));
-  overlay.querySelector("#tourNext").addEventListener("click", () => {
-    if (index === steps.length - 1) closeTour();
-    else showStep(index + 1);
+  backButton.addEventListener("click", () => {
+    showStep(index - 1);
+    nextButton.focus();
   });
-  overlay.querySelector("#tourSkip").addEventListener("click", closeTour);
-
-  if (!window.localStorage.getItem("pulsegridTourSeen")) {
-    window.setTimeout(openTour, 700);
-  }
+  nextButton.addEventListener("click", () => {
+    if (index === steps.length - 1) closeTour();
+    else {
+      showStep(index + 1);
+      nextButton.focus();
+    }
+  });
+  skipButton.addEventListener("click", closeTour);
+  overlay.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeTour();
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      nextButton.click();
+    }
+    if (event.key === "ArrowLeft" && !backButton.disabled) {
+      event.preventDefault();
+      backButton.click();
+    }
+  });
 }
 
 on("#processVoice", "click", processVoiceNote);

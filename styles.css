@@ -980,6 +980,123 @@ footer a {
   background: #eaf8f0;
 }
 
+.tour-start {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 70;
+  min-height: 3rem;
+  padding-inline: 1.25rem;
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(35, 104, 162, 0.28);
+}
+
+.tour-overlay {
+  position: fixed;
+  inset: auto 1rem 1rem 1rem;
+  z-index: 80;
+  display: none;
+  pointer-events: none;
+}
+
+.tour-overlay.open {
+  display: block;
+}
+
+.tour-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 1.15rem;
+  align-items: center;
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  border: 1px solid rgba(35, 104, 162, 0.25);
+  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 22px 70px rgba(24, 37, 47, 0.22);
+  pointer-events: auto;
+}
+
+.tour-copy h2 {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+.tour-copy p:last-child {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.tour-side {
+  min-width: 9rem;
+}
+
+.tour-progress {
+  color: var(--green);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.tour-dots {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.tour-dots span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: #cbd9d4;
+}
+
+.tour-dots .active {
+  width: 1.35rem;
+  background: var(--blue);
+}
+
+.tour-hint {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.tour-actions {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.tour-actions button {
+  min-height: 2.75rem;
+  white-space: nowrap;
+}
+
+.tour-actions .tour-primary {
+  min-width: 9.25rem;
+  box-shadow: 0 12px 24px rgba(35, 104, 162, 0.24);
+}
+
+.tour-actions .tour-primary:focus-visible,
+.tour-start:focus-visible {
+  outline: 3px solid rgba(35, 104, 162, 0.35);
+  outline-offset: 3px;
+}
+
+.tour-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.tour-target {
+  position: relative;
+  outline: 4px solid rgba(35, 104, 162, 0.28);
+  outline-offset: 6px;
+  box-shadow: 0 0 0 10px rgba(35, 104, 162, 0.08);
+}
+
 @media (max-width: 1050px) {
   .hero,
   .prototype-grid,
@@ -1057,5 +1174,33 @@ footer a {
 
   footer {
     flex-direction: column;
+  }
+
+  .tour-overlay {
+    inset: auto 0.6rem 0.6rem 0.6rem;
+  }
+
+  .tour-panel {
+    grid-template-columns: 1fr;
+    padding: 0.9rem;
+  }
+
+  .tour-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tour-actions .tour-primary {
+    grid-column: 1 / -1;
+    min-width: 0;
+    order: -1;
+  }
+
+  .tour-side {
+    min-width: 0;
+  }
+
+  .tour-hint {
+    white-space: normal;
   }
 }
