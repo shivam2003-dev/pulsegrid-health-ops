@@ -3,121 +3,114 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PulseGrid | District Health Operations</title>
+    <title>PulseGrid | AI District Health Operations</title>
     <meta
       name="description"
-      content="Voice-first district health centre and supply chain operations prototype for PHCs and CHCs."
+      content="PulseGrid is a multilingual AI platform for PHC and CHC stock, footfall, beds, doctor attendance and test availability operations."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">Code for Communities · Smart Health</p>
-          <h1>PulseGrid District Ops</h1>
-        </div>
-        <div class="status-strip" aria-label="System status">
-          <span><strong>32</strong> centres</span>
-          <span><strong>17</strong> live signals</span>
-          <span class="risk-pill">4 urgent</span>
-        </div>
-      </header>
+    <header class="topbar">
+      <a class="brand" href="#prototype" aria-label="PulseGrid home">
+        <span class="brand-mark">PG</span>
+        <span>
+          <strong>PulseGrid</strong>
+          <small>District Health Ops Twin</small>
+        </span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#challenge">Challenge</a>
+        <a href="#prototype">Prototype</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#rubric">Rubric</a>
+        <a href="#submit">Submit</a>
+      </nav>
+    </header>
 
-      <main class="dashboard">
-        <aside class="side-panel" aria-label="District filters">
-          <div class="section-title">
-            <span>District</span>
-            <strong>Sehore Rural</strong>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Code for Communities · Smart Health</p>
+          <h1>Voice-first AI command centre for every PHC and CHC.</h1>
+          <p class="lead">
+            PulseGrid turns WhatsApp voice notes, register photos, IVR calls and existing
+            e-Aushadhi/HMIS signals into stock-out warnings, demand forecasts, redistribution
+            orders and fair facility intervention flags.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#prototype">Run the demo flow</a>
+            <a class="button secondary" href="SOLUTION.md">Read the write-up</a>
           </div>
-          <label class="field-label" for="language">Voice language</label>
+          <div class="hero-proof" aria-label="Prototype proof points">
+            <span>Hindi + Marathi</span>
+            <span>Rs 6,000 Android ready</span>
+            <span>2G/store-and-forward</span>
+            <span>No patient PII</span>
+          </div>
+        </div>
+        <section class="ops-card" aria-label="Live district status summary">
+          <div class="ops-head">
+            <p class="eyebrow">Synthetic district</p>
+            <strong>Sehore Rural · 30 PHCs · 2 CHCs</strong>
+          </div>
+          <div class="ops-metrics">
+            <div><span>Urgent centres</span><strong id="urgentCount">4</strong></div>
+            <div><span>Stock risk</span><strong id="heroRisk">7d</strong></div>
+            <div><span>Data confidence</span><strong id="heroConfidence">82%</strong></div>
+          </div>
+          <div class="mini-map" aria-label="District route preview">
+            <svg viewBox="0 0 420 220" role="img">
+              <path class="mini-route" d="M52 58 L162 98 L256 66 L360 112" />
+              <path class="mini-route active" d="M162 98 L258 152" />
+              <path class="mini-route" d="M96 174 L162 98 L258 152 L354 180" />
+              <g class="mini-node stable" transform="translate(52 58)"><circle r="13" /></g>
+              <g class="mini-node donor" transform="translate(162 98)"><circle r="18" /></g>
+              <g class="mini-node critical" transform="translate(258 152)"><circle r="21" /></g>
+              <g class="mini-node watch" transform="translate(256 66)"><circle r="16" /></g>
+              <g class="mini-node stable" transform="translate(360 112)"><circle r="13" /></g>
+              <g class="mini-node watch" transform="translate(96 174)"><circle r="15" /></g>
+              <g class="mini-node stable" transform="translate(354 180)"><circle r="13" /></g>
+            </svg>
+          </div>
+          <p class="ops-note">Live recommendation: move ORS and malaria RDT kits from PHC Ashta Road to PHC Bhairavpur.</p>
+        </section>
+      </section>
+
+      <section id="challenge" class="challenge section-band">
+        <div class="section-title">
+          <p class="eyebrow">The challenge</p>
+          <h2>Every required stream is handled without creating a new data-entry burden.</h2>
+        </div>
+        <div class="challenge-grid">
+          <article><span>01</span><h3>Stock</h3><p>Voice note, register photo OCR and e-Aushadhi/DVDMS import become item-level stock events.</p></article>
+          <article><span>02</span><h3>Footfall</h3><p>OPD register photo, IVR count and HMIS reconciliation create daily aggregate demand signals.</p></article>
+          <article><span>03</span><h3>Beds</h3><p>CHC bed-board photo or IVR summary updates ward occupancy and referral pressure.</p></article>
+          <article><span>04</span><h3>Attendance</h3><p>Service continuity is inferred from prescriptions, OPD patterns and eSanjeevani sessions.</p></article>
+          <article><span>05</span><h3>Tests</h3><p>Lab shelf photo and voice note detect malaria RDT, Hb strip, pregnancy kit and reagent gaps.</p></article>
+        </div>
+      </section>
+
+      <section id="prototype" class="prototype-grid">
+        <section class="panel voice-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Working prototype</p>
+              <h2>Voice note to district action</h2>
+            </div>
+            <span class="pill" id="voiceConfidence">LLM confidence 91%</span>
+          </div>
+          <label for="language">Demo language</label>
           <select id="language">
             <option value="hi">Hindi</option>
             <option value="mr">Marathi</option>
           </select>
-
-          <div class="metric-stack">
-            <div class="metric">
-              <span>Stock-out risk</span>
-              <strong id="stockRisk">7 days</strong>
-            </div>
-            <div class="metric">
-              <span>District cover</span>
-              <strong>23 days</strong>
-            </div>
-            <div class="metric">
-              <span>Data freshness</span>
-              <strong id="freshness">82%</strong>
-            </div>
-          </div>
-
-          <div class="legend">
-            <span><i class="dot critical"></i>Critical</span>
-            <span><i class="dot watch"></i>Watch</span>
-            <span><i class="dot stable"></i>Stable</span>
-          </div>
-        </aside>
-
-        <section class="map-panel" aria-label="District facility graph">
-          <div class="panel-header">
-            <div>
-              <p class="eyebrow">Live operating twin</p>
-              <h2>PHC/CHC supply graph</h2>
-            </div>
-            <button id="simulateDay" class="icon-button" type="button" title="Advance one day">
-              +1d
-            </button>
-          </div>
-          <svg class="district-map" viewBox="0 0 720 430" role="img" aria-label="Facility graph map">
-            <defs>
-              <linearGradient id="routeGradient" x1="0%" x2="100%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#6a994e" />
-                <stop offset="100%" stop-color="#bc4749" />
-              </linearGradient>
-            </defs>
-            <path class="river" d="M48 326 C142 270, 214 340, 318 286 S530 240, 676 296" />
-            <path class="route muted" d="M122 112 L294 170 L438 114 L582 164" />
-            <path class="route active-route" d="M294 170 L438 252" />
-            <path class="route muted" d="M188 310 L294 170 L438 252 L594 328" />
-            <g class="node stable-node" transform="translate(122 112)">
-              <circle r="19"></circle><text y="5">PHC 03</text>
-            </g>
-            <g class="node donor-node" transform="translate(294 170)">
-              <circle r="24"></circle><text y="5">PHC 12</text>
-            </g>
-            <g class="node critical-node pulse" transform="translate(438 252)">
-              <circle r="28"></circle><text y="5">PHC 07</text>
-            </g>
-            <g class="node watch-node" transform="translate(438 114)">
-              <circle r="22"></circle><text y="5">CHC 01</text>
-            </g>
-            <g class="node stable-node" transform="translate(582 164)">
-              <circle r="18"></circle><text y="5">PHC 18</text>
-            </g>
-            <g class="node watch-node" transform="translate(188 310)">
-              <circle r="20"></circle><text y="5">CHC 02</text>
-            </g>
-            <g class="node stable-node" transform="translate(594 328)">
-              <circle r="18"></circle><text y="5">PHC 21</text>
-            </g>
-            <text class="map-label" x="344" y="215">ORS transfer path · 21 km</text>
-          </svg>
-        </section>
-
-        <section class="voice-panel" aria-label="Voice stock update">
-          <div class="panel-header">
-            <div>
-              <p class="eyebrow">Passive capture</p>
-              <h2>WhatsApp voice intake</h2>
-            </div>
-            <span class="confidence" id="voiceConfidence">LLM confidence 91%</span>
-          </div>
           <textarea id="voiceText" rows="5">PHC Bhairavpur mein ORS 18 packet bache hain, paracetamol 500 ki 10 strip hain, malaria RDT khatam hai. Aaj OPD 118 tha aur bukhar ke 31 patient aaye.</textarea>
           <div class="button-row">
             <button id="processVoice" type="button">Process voice note</button>
             <button id="loadMarathi" class="secondary" type="button">Marathi sample</button>
           </div>
-          <div class="extraction-grid" id="extractionGrid">
+          <div class="extract-grid" id="extractGrid">
             <div><span>Facility</span><strong>PHC Bhairavpur</strong></div>
             <div><span>Stock</span><strong>Pending</strong></div>
             <div><span>Footfall</span><strong>Pending</strong></div>
@@ -125,8 +118,8 @@
           </div>
         </section>
 
-        <section class="risk-panel" aria-label="Stock-out warnings">
-          <div class="panel-header">
+        <section class="panel warning-panel">
+          <div class="panel-head">
             <div>
               <p class="eyebrow">Lead-time aware</p>
               <h2>Stock-out queue</h2>
@@ -135,36 +128,27 @@
           </div>
           <div class="warning-list" id="warningList">
             <article class="warning critical-border">
-              <div>
-                <strong>ORS · PHC Bhairavpur</strong>
-                <span>6 days cover · 21 day lead time</span>
-              </div>
+              <div><strong>ORS · PHC Bhairavpur</strong><span>6 days cover · 21 day lead time</span></div>
               <b>Critical</b>
             </article>
             <article class="warning watch-border">
-              <div>
-                <strong>Hb strips · CHC Ichhawar</strong>
-                <span>11 days cover · ANC load rising</span>
-              </div>
+              <div><strong>Hb strips · CHC Ichhawar</strong><span>11 days cover · ANC load rising</span></div>
               <b>Watch</b>
             </article>
             <article class="warning watch-border">
-              <div>
-                <strong>Amoxicillin · PHC Bilkisganj</strong>
-                <span>13 days cover · dengue season</span>
-              </div>
+              <div><strong>Amoxicillin · PHC Bilkisganj</strong><span>13 days cover · dengue season</span></div>
               <b>Watch</b>
             </article>
           </div>
         </section>
 
-        <section class="order-panel" aria-label="Redistribution recommendation">
-          <div class="panel-header">
+        <section class="panel transfer-panel">
+          <div class="panel-head">
             <div>
               <p class="eyebrow">Graph optimization</p>
-              <h2>Draft transfer order</h2>
+              <h2>Redistribution order</h2>
             </div>
-            <span class="confidence">min-cost flow</span>
+            <span class="pill">min-cost flow</span>
           </div>
           <div class="transfer-card" id="transferCard">
             <div class="transfer-line">
@@ -180,10 +164,10 @@
           </div>
         </section>
 
-        <section class="score-panel" aria-label="Facility health score">
-          <div class="panel-header">
+        <section class="panel score-panel">
+          <div class="panel-head">
             <div>
-              <p class="eyebrow">Fair scoring</p>
+              <p class="eyebrow">Fair intervention</p>
               <h2>Centre health score</h2>
             </div>
             <strong class="score" id="healthScore">61</strong>
@@ -196,20 +180,66 @@
           </div>
         </section>
 
-        <section class="copilot-panel" aria-label="District health copilot">
-          <div class="panel-header">
+        <section class="panel copilot-panel">
+          <div class="panel-head">
             <div>
-              <p class="eyebrow">CMO copilot</p>
-              <h2>Intervention brief</h2>
+              <p class="eyebrow">District copilot</p>
+              <h2>CMO intervention brief</h2>
             </div>
             <button id="askCopilot" class="secondary" type="button">Ask</button>
           </div>
-          <p id="copilotAnswer">
-            Top intervention: PHC Bhairavpur needs ORS and malaria RDT action before Monday. The stock issue is district-solvable through redistribution; the test issue requires district store confirmation.
-          </p>
+          <p id="copilotAnswer">Top intervention: PHC Bhairavpur needs ORS and malaria RDT action before Monday. The stock issue is district-solvable through redistribution; the test issue requires district store confirmation.</p>
         </section>
-      </main>
-    </div>
+      </section>
+
+      <section id="architecture" class="section-band architecture">
+        <div class="section-title">
+          <p class="eyebrow">Deployability and scale</p>
+          <h2>Production path uses government systems plus Google Cloud services.</h2>
+        </div>
+        <div class="architecture-grid">
+          <article><b>Capture</b><p>WhatsApp/IVR/PWA, register photo OCR, e-Aushadhi/DVDMS import, HMIS aggregate reconciliation.</p></article>
+          <article><b>AI layer</b><p>Speech-to-text, translation, OCR, LLM extraction, anomaly explanation and confidence scoring.</p></article>
+          <article><b>Forecasting</b><p>Gradient boosting for mature data, seasonal baselines for sparse PHCs, Croston/TSB for intermittent medicines.</p></article>
+          <article><b>Optimization</b><p>District graph with facility nodes, road-cost edges, FEFO lots, cold-chain constraints and min-cost flow.</p></article>
+          <article><b>Operations</b><p>Cloud Run APIs, Cloud SQL/PostGIS, Pub/Sub ingestion, Cloud Scheduler jobs, Looker/BigQuery analytics.</p></article>
+          <article><b>Privacy</b><p>Aggregate counts only, no ABHA or patient PII, raw images deleted after extraction, role-based district access.</p></article>
+        </div>
+      </section>
+
+      <section id="rubric" class="rubric section-band">
+        <div class="section-title">
+          <p class="eyebrow">How this is scored</p>
+          <h2>Built to answer each evaluation parameter directly.</h2>
+        </div>
+        <div class="rubric-list">
+          <article><strong>20%</strong><div><h3>Problem-Solution Fit</h3><p>Covers stock, footfall, beds, attendance, tests, forecasts, redistribution and under-resourced centre flags.</p></div></article>
+          <article><strong>25%</strong><div><h3>AI / Technical Execution</h3><p>Real extraction, forecasting design, anomaly logic, lead-time warning and min-cost flow optimization are specified.</p></div></article>
+          <article><strong>25%</strong><div><h3>Deployability & Scalability</h3><p>Works on low-end phones, piggybacks on existing government systems and has a district-to-state rollout architecture.</p></div></article>
+          <article><strong>15%</strong><div><h3>Inclusivity & Accessibility</h3><p>Hindi/Marathi voice-first flow, IVR fallback, low literacy UI and store-and-forward operation for weak connectivity.</p></div></article>
+          <article><strong>10%</strong><div><h3>Impact Potential</h3><p>Reduces stock-out days, emergency indents, avoidable referrals and hidden service downtime across a district.</p></div></article>
+          <article><strong>5%</strong><div><h3>Presentation & Clarity</h3><p>Three-minute demo script and CMO-ready intervention brief make value clear to a non-technical office.</p></div></article>
+        </div>
+      </section>
+
+      <section id="submit" class="submit section-band">
+        <div class="section-title">
+          <p class="eyebrow">What you hand in</p>
+          <h2>Four submission items are included in this repository.</h2>
+        </div>
+        <div class="submit-grid">
+          <article><span>01</span><h3>Working prototype</h3><p>This website runs the end-to-end voice-to-transfer-order demo flow.</p></article>
+          <article><span>02</span><h3>Code repository</h3><p>Public GitHub repo with README, setup steps and GitHub Actions deployment.</p></article>
+          <article><span>03</span><h3>Pitch deck</h3><p><a href="PITCH_DECK.md">PITCH_DECK.md</a> contains the slide-by-slide story and demo script.</p></article>
+          <article><span>04</span><h3>Project write-up</h3><p><a href="PROJECT_WRITEUP.md">PROJECT_WRITEUP.md</a> covers problem, architecture, tools, data and impact.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>PulseGrid · Smart Health Track</span>
+      <a href="SOLUTION.md">Full solution blueprint</a>
+    </footer>
     <script src="app.js"></script>
   </body>
 </html>
