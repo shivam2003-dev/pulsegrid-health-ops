@@ -10,11 +10,12 @@ https://shivam2003-dev.github.io/pulsegrid-health-ops/
 
 ## Submission Package
 
-- Working prototype: `index.html`, `styles.css`, `app.js`
+- Working prototype: `index.html`, `dashboard.html`, `intake.html`, `forecasts.html`, `redistribution.html`, `facilities.html`, `architecture.html`, `submission.html`, `styles.css`, `app.js`
 - Code repository: public GitHub repo with setup and CI/CD
 - Pitch deck: `PITCH_DECK.md`
 - Project write-up: `PROJECT_WRITEUP.md`
 - Full blueprint: `SOLUTION.md`
+- Selected-round roadmap: `phase.md`
 
 ## Run Locally
 
@@ -34,12 +35,13 @@ If that port is occupied, use any free port, for example `python3 -m http.server
 
 ## Demo Flow
 
-1. Click `Process voice note`.
-2. Watch the Hindi voice update become structured stock, footfall and test signals.
-3. Review the lead-time-aware stock-out queue.
-4. Review the generated redistribution order.
-5. Click `Mark ready for CMO review`.
-6. Click `Ask` in the copilot panel.
+1. Open `dashboard.html` for the district command centre.
+2. Open `intake.html` and click `Process voice note`.
+3. Watch the Hindi voice update become structured stock, footfall and test signals.
+4. Review the generated redistribution order in `redistribution.html`.
+5. Review forecasting logic in `forecasts.html`.
+6. Review facility attribution in `facilities.html`.
+7. Validate the embedded hand-in form in `submission.html`.
 
 ## CI/CD
 
@@ -49,4 +51,11 @@ Workflow:
 
 ```text
 .github/workflows/pages.yml
+```
+
+Local checks:
+
+```bash
+npm run check
+npm run test:site
 ```

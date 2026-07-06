@@ -9,6 +9,7 @@
       content="PulseGrid is a multilingual AI platform for PHC and CHC stock, footfall, beds, doctor attendance and test availability operations."
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   </head>
   <body>
     <header class="topbar">
@@ -20,11 +21,13 @@
         </span>
       </a>
       <nav aria-label="Main navigation">
-        <a href="#challenge">Challenge</a>
-        <a href="#prototype">Prototype</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#webform">Webform</a>
-        <a href="#submit">Submit</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="intake.html">AI Intake</a>
+        <a href="forecasts.html">Forecasts</a>
+        <a href="redistribution.html">Redistribution</a>
+        <a href="facilities.html">Facilities</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="submission.html">Submission</a>
       </nav>
     </header>
 
@@ -39,8 +42,8 @@
             orders and fair facility intervention flags.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#prototype">Run the demo flow</a>
-            <a class="button secondary" href="#webform">Open full webform</a>
+            <a class="button primary" href="intake.html">Run the AI intake flow</a>
+            <a class="button secondary" href="dashboard.html">Open district dashboard</a>
           </div>
           <div class="hero-proof" aria-label="Prototype proof points">
             <span>Hindi + Marathi</span>
@@ -88,6 +91,19 @@
           <article><span>03</span><h3>Beds</h3><p>CHC bed-board photo or IVR summary updates ward occupancy and referral pressure.</p></article>
           <article><span>04</span><h3>Attendance</h3><p>Service continuity is inferred from prescriptions, OPD patterns and eSanjeevani sessions.</p></article>
           <article><span>05</span><h3>Tests</h3><p>Lab shelf photo and voice note detect malaria RDT, Hb strip, pregnancy kit and reagent gaps.</p></article>
+        </div>
+      </section>
+
+      <section class="section-band">
+        <div class="section-title">
+          <p class="eyebrow">Selected-round build</p>
+          <h2>Phase 1 and Phase 2 are now split into product pages.</h2>
+        </div>
+        <div class="submit-grid">
+          <article><span>01</span><h3>District dashboard</h3><p>CMO-ready view of stock, beds, tests, footfall and service continuity.</p></article>
+          <article><span>02</span><h3>AI intake workbench</h3><p>Voice/OCR extraction, anomaly explanation and copilot answer in one flow.</p></article>
+          <article><span>03</span><h3>Forecasting engine</h3><p>Medicine, footfall, bed and test demand models with cold-start handling.</p></article>
+          <article><span>04</span><h3>Transfer optimizer</h3><p>Graph-based redistribution orders with expiry, buffer and transport constraints.</p></article>
         </div>
       </section>
 

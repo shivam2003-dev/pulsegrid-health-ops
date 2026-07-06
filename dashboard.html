@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PulseGrid | District Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PulseGrid home">
+        <span class="brand-mark">PG</span>
+        <span><strong>PulseGrid</strong><small>District Command Centre</small></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="intake.html">AI Intake</a>
+        <a href="forecasts.html">Forecasts</a>
+        <a href="redistribution.html">Redistribution</a>
+        <a href="facilities.html">Facilities</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="submission.html">Submission</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">District operations</p>
+        <h1>Live view for CMO, district store and block teams.</h1>
+        <p class="lead">The dashboard combines passive PHC/CHC signals into a single intervention queue: stock, footfall, beds, doctor service continuity and test readiness.</p>
+      </section>
+
+      <section class="ops-grid section-band">
+        <article class="metric-card"><span>Centres monitored</span><strong>32</strong><p>30 PHCs, 2 CHCs, 1 district store.</p></article>
+        <article class="metric-card danger"><span>Critical stock risks</span><strong>5</strong><p>Three before Monday; two require district store action.</p></article>
+        <article class="metric-card warn"><span>Bed pressure</span><strong>81%</strong><p>CHC Ichhawar maternity and male ward nearing full.</p></article>
+        <article class="metric-card"><span>Signal freshness</span><strong>91%</strong><p>Voice, OCR and import signals reconciled today.</p></article>
+      </section>
+
+      <section class="prototype-grid compact-grid">
+        <article class="panel">
+          <div class="panel-head"><div><p class="eyebrow">Route graph</p><h2>District transfer map</h2></div><span class="pill">21 km route</span></div>
+          <div class="mini-map large-map" aria-label="District route graph">
+            <svg viewBox="0 0 520 280" role="img">
+              <path class="mini-route" d="M64 76 L206 126 L322 76 L456 140" />
+              <path class="mini-route active" d="M206 126 L326 194" />
+              <path class="mini-route" d="M116 224 L206 126 L326 194 L452 226" />
+              <g class="mini-node stable" transform="translate(64 76)"><circle r="14" /></g>
+              <g class="mini-node donor" transform="translate(206 126)"><circle r="21" /></g>
+              <g class="mini-node critical" transform="translate(326 194)"><circle r="24" /></g>
+              <g class="mini-node watch" transform="translate(322 76)"><circle r="18" /></g>
+              <g class="mini-node stable" transform="translate(456 140)"><circle r="14" /></g>
+              <g class="mini-node watch" transform="translate(116 224)"><circle r="17" /></g>
+              <g class="mini-node stable" transform="translate(452 226)"><circle r="14" /></g>
+            </svg>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><div><p class="eyebrow">Intervention queue</p><h2>Today before 5 PM</h2></div><span class="risk-pill">5 open</span></div>
+          <div class="warning-list">
+            <article class="warning critical-border"><div><strong>PHC Bhairavpur</strong><span>ORS 6 days, malaria RDT 0 stock, fever spike.</span></div><b>CMO</b></article>
+            <article class="warning watch-border"><div><strong>CHC Ichhawar</strong><span>Hb strips 11 days, ANC load rising.</span></div><b>Store</b></article>
+            <article class="warning watch-border"><div><strong>PHC Bilkisganj</strong><span>Amoxicillin risk due to dengue season demand.</span></div><b>MO</b></article>
+          </div>
+        </article>
+
+        <article class="panel copilot-panel">
+          <div class="panel-head"><div><p class="eyebrow">CMO copilot</p><h2>Morning briefing</h2></div><button id="askCopilot" class="secondary" type="button">Generate</button></div>
+          <p id="copilotAnswer">Top action: approve intra-block transfer for PHC Bhairavpur and ask district store to release malaria RDT kits. Do not penalize the PHC because upstream RDT supply was unavailable for 9 days.</p>
+        </article>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

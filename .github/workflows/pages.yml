@@ -28,13 +28,24 @@ jobs:
           node-version: "22"
 
       - name: Validate JavaScript
-        run: node --check app.js
+        run: npm run check
+
+      - name: Validate static site
+        run: npm run test:site
 
       - name: Validate required artifacts
         run: |
           test -f index.html
+          test -f dashboard.html
+          test -f intake.html
+          test -f forecasts.html
+          test -f redistribution.html
+          test -f facilities.html
+          test -f architecture.html
+          test -f submission.html
           test -f styles.css
           test -f app.js
+          test -f phase.md
           test -f README.md
           test -f SOLUTION.md
           test -f PITCH_DECK.md

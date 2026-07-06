@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>PulseGrid | Architecture</title><link rel="stylesheet" href="styles.css" /><link rel="icon" href="favicon.svg" type="image/svg+xml" /></head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PulseGrid home"><span class="brand-mark">PG</span><span><strong>PulseGrid</strong><small>Architecture</small></span></a>
+      <nav aria-label="Main navigation"><a href="dashboard.html">Dashboard</a><a href="intake.html">AI Intake</a><a href="forecasts.html">Forecasts</a><a href="redistribution.html">Redistribution</a><a href="facilities.html">Facilities</a><a href="architecture.html">Architecture</a><a href="submission.html">Submission</a></nav>
+    </header>
+    <main>
+      <section class="page-hero"><p class="eyebrow">Pilot-ready system</p><h1>Static demo now, real services next.</h1><p class="lead">This page shows the backend path for Phase 3 while keeping API keys out of the repository.</p></section>
+      <section class="section-band architecture-grid">
+        <article><b>Frontend</b><p>Static GitHub Pages demo today; later a PWA for PHC/CHC staff and district admin users.</p></article>
+        <article><b>API</b><p>Spring Boot for facility, stock, alerts and transfer-order workflows.</p></article>
+        <article><b>AI service</b><p>Python FastAPI for OCR, forecasting, anomaly detection and min-cost-flow optimization.</p></article>
+        <article><b>Data</b><p>PostgreSQL/PostGIS for facilities, routes, lots, daily signals, forecast outputs and approvals.</p></article>
+        <article><b>Cloud</b><p>Cloud Run, Pub/Sub, Cloud SQL, Cloud Storage lifecycle deletion, BigQuery/Looker monitoring.</p></article>
+        <article><b>Secrets</b><p>Use `.env` locally and cloud secret manager in production. Never commit `OPENROUTER_API_KEY`.</p></article>
+      </section>
+      <section class="section-band">
+        <div class="panel"><p class="eyebrow">AI gateway contract</p><h2>Environment-only integration</h2><pre class="code-block">OPENROUTER_API_KEY=rotated_key_here
+AI_MODEL=openai/gpt-4.1-mini
+AI_EXTRACTION_MODE=json_schema
+RAW_IMAGE_RETENTION_HOURS=24</pre></div>
+      </section>
+    </main>
+  </body>
+</html>

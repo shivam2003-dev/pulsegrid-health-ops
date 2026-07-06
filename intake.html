@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PulseGrid | AI Intake</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PulseGrid home"><span class="brand-mark">PG</span><span><strong>PulseGrid</strong><small>AI Intake Workbench</small></span></a>
+      <nav aria-label="Main navigation">
+        <a href="dashboard.html">Dashboard</a><a href="intake.html">AI Intake</a><a href="forecasts.html">Forecasts</a><a href="redistribution.html">Redistribution</a><a href="facilities.html">Facilities</a><a href="architecture.html">Architecture</a><a href="submission.html">Submission</a>
+      </nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">AI capture</p>
+        <h1>One PHC voice note becomes structured district action.</h1>
+        <p class="lead">This page simulates the AI pathway: speech/translation/OCR extraction, confidence scoring, anomaly explanation and action generation.</p>
+      </section>
+      <section class="prototype-grid">
+        <section class="panel voice-panel">
+          <div class="panel-head"><div><p class="eyebrow">Multilingual passive capture</p><h2>Voice/OCR parser</h2></div><span class="pill" id="voiceConfidence">LLM confidence 91%</span></div>
+          <label for="language">Demo language</label>
+          <select id="language"><option value="hi">Hindi</option><option value="mr">Marathi</option></select>
+          <textarea id="voiceText" rows="7">PHC Bhairavpur mein ORS 18 packet bache hain, paracetamol 500 ki 10 strip hain, malaria RDT khatam hai. Aaj OPD 118 tha aur bukhar ke 31 patient aaye.</textarea>
+          <div class="button-row"><button id="processVoice" type="button">Process voice note</button><button id="loadMarathi" class="secondary" type="button">Marathi sample</button></div>
+          <div class="extract-grid" id="extractGrid">
+            <div><span>Facility</span><strong>PHC Bhairavpur</strong></div><div><span>Stock</span><strong>Pending</strong></div><div><span>Footfall</span><strong>Pending</strong></div><div><span>Tests</span><strong>Pending</strong></div>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><div><p class="eyebrow">AI reasoning</p><h2>Anomaly explanation</h2></div><span class="pill">safe mode</span></div>
+          <div class="ai-trace" id="aiTrace">
+            <p><b>Input:</b> noisy voice/OCR text from PHC staff.</p>
+            <p><b>Extraction:</b> waiting for voice note.</p>
+            <p><b>Guardrail:</b> aggregate operational data only; no patient PII stored.</p>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><div><p class="eyebrow">Escalation</p><h2>Generated action</h2></div><span class="risk-pill">draft</span></div>
+          <div class="transfer-card" id="transferCard">
+            <p>After processing, PulseGrid will generate a draft transfer order and CMO briefing. Human approval remains mandatory.</p>
+            <button id="approveOrder" type="button">Mark ready for CMO review</button>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

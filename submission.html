@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>PulseGrid | Submission Webform</title><link rel="stylesheet" href="styles.css" /><link rel="icon" href="favicon.svg" type="image/svg+xml" /></head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PulseGrid home"><span class="brand-mark">PG</span><span><strong>PulseGrid</strong><small>Submission Webform</small></span></a>
+      <nav aria-label="Main navigation"><a href="dashboard.html">Dashboard</a><a href="intake.html">AI Intake</a><a href="forecasts.html">Forecasts</a><a href="redistribution.html">Redistribution</a><a href="facilities.html">Facilities</a><a href="architecture.html">Architecture</a><a href="submission.html">Submission</a></nav>
+    </header>
+    <main>
+      <section id="webform" class="section-band webform-section">
+        <div class="section-title"><p class="eyebrow">Single-page hand-in</p><h2>Complete submission webform</h2></div>
+        <form id="submissionForm" class="submission-form">
+          <fieldset><legend>1. Project identity</legend><div class="form-grid"><label>Project name<input value="PulseGrid District Health Ops Twin" readonly /></label><label>Track<input value="Smart Health — AI-Driven Health Center & Supply Chain Management" readonly /></label><label>One-line pitch<textarea rows="3" readonly>PulseGrid turns PHC registers and WhatsApp updates into live forecasts, fair facility scores and actionable medicine redistribution orders.</textarea></label><label>Target users<textarea rows="3" readonly>PHC pharmacists, medical officers, CHC staff, district store managers, CMO/DPM offices and NHM district administrators.</textarea></label></div></fieldset>
+          <fieldset><legend>2. End-to-end prototype flow</legend><div class="flow-grid"><article><b>Capture</b><p>Hindi/Marathi voice note or register photo arrives from PHC staff.</p></article><article><b>Extract</b><p>LLM/OCR converts messy text into stock, footfall and test signals.</p></article><article><b>Forecast</b><p>Lead-time-aware model estimates days of cover and flags risk.</p></article><article><b>Optimize</b><p>District graph solver recommends a feasible transfer.</p></article><article><b>Approve</b><p>Draft order goes to MO, district store and CMO.</p></article></div></fieldset>
+          <fieldset><legend>3. Project write-up</legend><label>Problem<textarea rows="5" readonly>PHCs and CHCs face recurring stock-outs, unmanaged patient footfall, bed pressure, doctor service gaps and test downtime. Data exists across registers and siloed systems, but administrators do not get early, actionable intervention signals.</textarea></label><label>Solution<textarea rows="6" readonly>PulseGrid passively captures stock, footfall, beds, service continuity and test availability, then produces early warnings, forecasts, redistribution recommendations and under-resourced centre flags.</textarea></label><label>Zero-friction adoption<textarea rows="5" readonly>PHC staff do not fill a new MIS. They use WhatsApp voice notes, IVR calls, register photos and existing e-Aushadhi/DVDMS/HMIS/eSanjeevani data.</textarea></label></fieldset>
+          <fieldset><legend>4. Demo script and status</legend><label>Three-minute demo<textarea rows="7" readonly>0:00 Show 32-facility district dashboard. 0:30 Process Hindi voice note. 0:50 Extract ORS, paracetamol, malaria RDT and OPD fever count. 1:10 Trigger stock-out warning. 1:25 Generate redistribution. 1:50 Mark transfer order ready for CMO review. 2:10 Ask district copilot for Monday interventions.</textarea></label><div class="check-grid"><label><input type="checkbox" checked disabled /> Working prototype included</label><label><input type="checkbox" checked disabled /> Code and setup included</label><label><input type="checkbox" checked disabled /> Pitch content embedded</label><label><input type="checkbox" checked disabled /> Project write-up embedded</label><label><input type="checkbox" checked disabled /> CI/CD configured</label><label><input type="checkbox" checked disabled /> No external document redirects</label></div></fieldset>
+          <div class="form-actions"><button id="validateSubmission" type="button">Validate webform package</button><output id="submissionStatus">Ready for review.</output></div>
+        </form>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

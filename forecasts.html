@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>PulseGrid | Forecasts</title><link rel="stylesheet" href="styles.css" /><link rel="icon" href="favicon.svg" type="image/svg+xml" /></head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PulseGrid home"><span class="brand-mark">PG</span><span><strong>PulseGrid</strong><small>Forecast Engine</small></span></a>
+      <nav aria-label="Main navigation"><a href="dashboard.html">Dashboard</a><a href="intake.html">AI Intake</a><a href="forecasts.html">Forecasts</a><a href="redistribution.html">Redistribution</a><a href="facilities.html">Facilities</a><a href="architecture.html">Architecture</a><a href="submission.html">Submission</a></nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">AI demand planning</p>
+        <h1>Forecasts that survive sparse, dirty government data.</h1>
+        <p class="lead">PulseGrid uses model choice by data quality: gradient boosting where history is usable, seasonal baselines for sparse centres and intermittent-demand methods for slow-moving medicines.</p>
+      </section>
+      <section class="forecast-layout section-band">
+        <article class="panel forecast-main">
+          <div class="panel-head"><div><p class="eyebrow">Stock-out forecast</p><h2>ORS demand at PHC Bhairavpur</h2></div><span class="risk-pill">6 days cover</span></div>
+          <div class="bar-chart" aria-label="14 day forecast bar chart">
+            <span style="--h:38%"></span><span style="--h:46%"></span><span style="--h:54%"></span><span style="--h:61%"></span><span style="--h:73%"></span><span style="--h:81%"></span><span style="--h:88%"></span><span style="--h:78%"></span><span style="--h:69%"></span><span style="--h:63%"></span><span style="--h:57%"></span><span style="--h:49%"></span><span style="--h:44%"></span><span style="--h:40%"></span>
+          </div>
+          <p>Forecast uses OPD fever load, diarrhoea seasonality, local rainfall proxy and censored-demand correction for prior stock-out days.</p>
+        </article>
+        <article class="panel"><p class="eyebrow">Medicine demand</p><h2>Model: quantile GBM</h2><p>Used when facility/item history exists. Output is p50/p75/p90 demand so reorder logic can be risk-aware.</p></article>
+        <article class="panel"><p class="eyebrow">Intermittent items</p><h2>Model: Croston/TSB</h2><p>Used for slow-moving antibiotics, reagents and emergency stock where zero-demand days dominate.</p></article>
+        <article class="panel"><p class="eyebrow">Footfall</p><h2>Seasonal baseline + events</h2><p>Day of week, market day, weather, mela/harvest calendars and disease season features drive OPD predictions.</p></article>
+        <article class="panel"><p class="eyebrow">Cold start</p><h2>Matched-centre borrowing</h2><p>New or digitally weak PHCs borrow priors from similar catchment size, geography, facility type and IPHS norm.</p></article>
+      </section>
+    </main>
+  </body>
+</html>

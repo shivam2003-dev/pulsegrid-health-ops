@@ -109,6 +109,14 @@ nav a {
   padding: clamp(1.1rem, 4vw, 3rem);
 }
 
+.page-hero {
+  padding: clamp(1.5rem, 5vw, 4rem) clamp(1.1rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
+}
+
+.page-hero h1 {
+  max-width: 14ch;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(22rem, 0.72fr);
@@ -260,6 +268,47 @@ button {
   font-size: 1.7rem;
 }
 
+.ops-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.metric-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.metric-card span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.metric-card strong {
+  display: block;
+  margin: 0.35rem 0;
+  color: var(--green);
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.metric-card.danger strong {
+  color: var(--red);
+}
+
+.metric-card.warn strong {
+  color: var(--amber);
+}
+
+.metric-card p,
+.panel p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .mini-map {
   margin-top: 1rem;
   border: 1px solid var(--line);
@@ -275,6 +324,10 @@ button {
   display: block;
   width: 100%;
   min-height: 220px;
+}
+
+.large-map svg {
+  min-height: 360px;
 }
 
 .mini-route {
@@ -360,6 +413,10 @@ button {
   gap: 1rem;
 }
 
+.compact-grid {
+  grid-template-columns: minmax(320px, 1.25fr) minmax(280px, 0.85fr);
+}
+
 .voice-panel {
   grid-row: span 2;
 }
@@ -413,6 +470,19 @@ textarea {
 .warning-list {
   display: grid;
   gap: 0.75rem;
+}
+
+.ai-trace {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.ai-trace p {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.8rem;
+  background: #f9fcfb;
 }
 
 .warning {
@@ -503,6 +573,52 @@ progress::-webkit-progress-value {
 
 .architecture-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.forecast-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.35fr) repeat(2, minmax(220px, 0.7fr));
+  gap: 1rem;
+}
+
+.forecast-main {
+  grid-row: span 2;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: end;
+  gap: 0.45rem;
+  min-height: 250px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  background: linear-gradient(180deg, #fbfefd, #eef7f3);
+}
+
+.bar-chart span {
+  flex: 1;
+  height: var(--h);
+  min-height: 18px;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(180deg, var(--blue), var(--green));
+}
+
+.code-block {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem;
+  background: #0f2933;
+  color: #e9fff5;
+  line-height: 1.6;
+}
+
+.plain-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .architecture-grid b {
@@ -679,6 +795,8 @@ footer a {
   .challenge-grid,
   .architecture-grid,
   .submit-grid,
+  .ops-grid,
+  .forecast-layout,
   .flow-grid,
   .deck-grid,
   .check-grid {
@@ -708,6 +826,8 @@ footer a {
   .challenge-grid,
   .architecture-grid,
   .submit-grid,
+  .ops-grid,
+  .forecast-layout,
   .form-grid,
   .architecture-form-grid,
   .flow-grid,

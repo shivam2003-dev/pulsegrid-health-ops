@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>PulseGrid | Redistribution</title><link rel="stylesheet" href="styles.css" /><link rel="icon" href="favicon.svg" type="image/svg+xml" /></head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="PulseGrid home"><span class="brand-mark">PG</span><span><strong>PulseGrid</strong><small>Transfer Optimizer</small></span></a>
+      <nav aria-label="Main navigation"><a href="dashboard.html">Dashboard</a><a href="intake.html">AI Intake</a><a href="forecasts.html">Forecasts</a><a href="redistribution.html">Redistribution</a><a href="facilities.html">Facilities</a><a href="architecture.html">Architecture</a><a href="submission.html">Submission</a></nav>
+    </header>
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">District graph optimization</p>
+        <h1>Warnings become feasible transfer orders.</h1>
+        <p class="lead">The optimizer treats the district as a graph with PHC/CHC/warehouse nodes, road-cost edges, expiry lots, buffer stock and cold-chain constraints.</p>
+      </section>
+      <section class="prototype-grid">
+        <article class="panel transfer-panel">
+          <div class="panel-head"><div><p class="eyebrow">Recommended order</p><h2>TO-24-071</h2></div><span class="pill">human approval</span></div>
+          <div class="transfer-card" id="transferCard">
+            <div class="transfer-line"><span>From</span><strong>PHC Ashta Road</strong><span>To</span><strong>PHC Bhairavpur</strong></div>
+            <div class="transfer-line"><span>Move</span><strong>80 ORS + 25 RDT</strong><span>Vehicle</span><strong>Block van</strong></div>
+            <p>Sender remains above buffer. Receiver avoids stock-out for 18 days. FEFO and route-cost constraints are satisfied.</p>
+            <button id="approveOrder" type="button">Mark ready for CMO review</button>
+          </div>
+        </article>
+        <article class="panel">
+          <p class="eyebrow">Objective</p><h2>Minimize district harm</h2>
+          <pre class="code-block">stockout_penalty
++ transport_cost
++ expiry_waste
++ cold_chain_penalty
++ equity_penalty</pre>
+        </article>
+        <article class="panel">
+          <p class="eyebrow">Constraints</p><h2>Operationally realistic</h2>
+          <ul class="plain-list"><li>Sender stays above buffer stock.</li><li>Receiver storage capacity is respected.</li><li>FEFO batches move first.</li><li>Cold-chain items use valid routes only.</li><li>CHC emergency reserve is protected.</li></ul>
+        </article>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

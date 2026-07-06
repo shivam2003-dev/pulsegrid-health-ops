@@ -4,6 +4,7 @@
   "private": true,
   "description": "Static PulseGrid PHC/CHC health operations prototype",
   "scripts": {
-    "check": "node --check app.js"
+    "check": "node --check app.js",
+    "test:site": "node scripts/test-site.mjs"
   }
 }
