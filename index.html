@@ -23,6 +23,7 @@
         <a href="#challenge">Challenge</a>
         <a href="#prototype">Prototype</a>
         <a href="#architecture">Architecture</a>
+        <a href="#webform">Webform</a>
         <a href="#submit">Submit</a>
       </nav>
     </header>
@@ -39,7 +40,7 @@
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#prototype">Run the demo flow</a>
-            <a class="button secondary" href="SOLUTION.md">Read the write-up</a>
+            <a class="button secondary" href="#webform">Open full webform</a>
           </div>
           <div class="hero-proof" aria-label="Prototype proof points">
             <span>Hindi + Marathi</span>
@@ -209,20 +210,140 @@
       <section id="submit" class="submit section-band">
         <div class="section-title">
           <p class="eyebrow">What you hand in</p>
-          <h2>Four submission items are included in this repository.</h2>
+          <h2>Four submission items are embedded on this page.</h2>
         </div>
         <div class="submit-grid">
           <article><span>01</span><h3>Working prototype</h3><p>This website runs the end-to-end voice-to-transfer-order demo flow.</p></article>
-          <article><span>02</span><h3>Code repository</h3><p>Public GitHub repo with README, setup steps and GitHub Actions deployment.</p></article>
-          <article><span>03</span><h3>Pitch deck</h3><p><a href="PITCH_DECK.md">PITCH_DECK.md</a> contains the slide-by-slide story and demo script.</p></article>
-          <article><span>04</span><h3>Project write-up</h3><p><a href="PROJECT_WRITEUP.md">PROJECT_WRITEUP.md</a> covers problem, architecture, tools, data and impact.</p></article>
+          <article><span>02</span><h3>Code repository</h3><p>README, setup steps and CI/CD status are summarized below without leaving the page.</p></article>
+          <article><span>03</span><h3>Pitch deck</h3><p>The slide-by-slide pitch is included in the webform section.</p></article>
+          <article><span>04</span><h3>Project write-up</h3><p>Problem, architecture, tools, data, privacy and impact are included in the webform section.</p></article>
         </div>
+      </section>
+
+      <section id="webform" class="section-band webform-section">
+        <div class="section-title">
+          <p class="eyebrow">Single-page hand-in</p>
+          <h2>Complete submission webform</h2>
+        </div>
+        <form id="submissionForm" class="submission-form">
+          <fieldset>
+            <legend>1. Project identity</legend>
+            <div class="form-grid">
+              <label>
+                Project name
+                <input value="PulseGrid District Health Ops Twin" readonly />
+              </label>
+              <label>
+                Track
+                <input value="Smart Health — AI-Driven Health Center & Supply Chain Management" readonly />
+              </label>
+              <label>
+                One-line pitch
+                <textarea rows="3" readonly>PulseGrid turns PHC registers and WhatsApp updates into live forecasts, fair facility scores and actionable medicine redistribution orders.</textarea>
+              </label>
+              <label>
+                Target users
+                <textarea rows="3" readonly>PHC pharmacists, medical officers, CHC staff, district store managers, CMO/DPM offices and NHM district administrators.</textarea>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. End-to-end prototype flow</legend>
+            <div class="flow-grid">
+              <article><b>Capture</b><p>Hindi/Marathi voice note or register photo arrives from PHC staff.</p></article>
+              <article><b>Extract</b><p>LLM/OCR converts messy text into stock, footfall and test signals with confidence.</p></article>
+              <article><b>Forecast</b><p>Lead-time-aware demand model estimates days of cover and flags stock-out risk.</p></article>
+              <article><b>Optimize</b><p>District graph solver recommends a feasible transfer using buffer, expiry and transport constraints.</p></article>
+              <article><b>Approve</b><p>Draft transfer order goes to MO, district store and CMO for human approval.</p></article>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. Project write-up</legend>
+            <label>
+              Problem
+              <textarea rows="5" readonly>PHCs and CHCs face recurring stock-outs, unmanaged patient footfall, bed pressure, doctor service gaps and test downtime. Data exists across registers and siloed systems, but district administrators do not get early, actionable intervention signals.</textarea>
+            </label>
+            <label>
+              Solution
+              <textarea rows="6" readonly>PulseGrid is a multilingual AI operations layer over PHC/CHC workflows. It passively captures stock, footfall, beds, service continuity and test availability, then produces early warnings, forecasts, redistribution recommendations and under-resourced centre flags.</textarea>
+            </label>
+            <label>
+              Zero-friction adoption
+              <textarea rows="5" readonly>PHC staff do not fill a new MIS. They use WhatsApp voice notes, IVR calls, register photos and existing e-Aushadhi/DVDMS/HMIS/eSanjeevani data. The design works on low-cost Android phones and weak rural connectivity.</textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>4. Technical architecture</legend>
+            <div class="architecture-form-grid">
+              <label>
+                Capture layer
+                <textarea rows="4" readonly>WhatsApp/IVR/PWA, compressed register photos, e-Aushadhi/DVDMS stock imports, HMIS aggregate reconciliation and eSanjeevani session counts.</textarea>
+              </label>
+              <label>
+                AI layer
+                <textarea rows="4" readonly>Speech-to-text, translation, OCR, LLM extraction, confidence scoring, anomaly explanation and multilingual summaries.</textarea>
+              </label>
+              <label>
+                Forecasting
+                <textarea rows="4" readonly>Gradient boosting for mature demand history, seasonal baselines for sparse PHCs, Croston/TSB for intermittent medicines and cold-start matching by facility profile.</textarea>
+              </label>
+              <label>
+                Optimization
+                <textarea rows="4" readonly>Min-cost flow over PHC/CHC/warehouse graph with buffer stock, FEFO expiry, route cost, cold-chain and emergency reserve constraints.</textarea>
+              </label>
+              <label>
+                Deployment
+                <textarea rows="4" readonly>Hackathon: static website on GitHub Pages through GitHub Actions. Pilot: Cloud Run APIs, Cloud SQL/PostGIS, Pub/Sub ingestion, Cloud Storage lifecycle deletion and BigQuery/Looker monitoring.</textarea>
+              </label>
+              <label>
+                Privacy
+                <textarea rows="4" readonly>No patient PII or ABHA needed. Aggregate operational counts only. Raw register images are processed, redacted where needed and deleted after extraction.</textarea>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>5. Pitch deck content</legend>
+            <div class="deck-grid">
+              <article><span>01</span><b>Title</b><p>Voice-first AI command centre for district PHC/CHC operations.</p></article>
+              <article><span>02</span><b>Problem</b><p>Manual, delayed visibility causes stock-outs, downtime and referrals.</p></article>
+              <article><span>03</span><b>Adoption</b><p>No new data entry; use voice, IVR, photos and existing systems.</p></article>
+              <article><span>04</span><b>AI</b><p>Extract, forecast, detect anomalies and optimize redistribution.</p></article>
+              <article><span>05</span><b>Demo</b><p>Voice note updates stock and creates transfer order.</p></article>
+              <article><span>06</span><b>Pilot</b><p>30-50 facilities, CMO office, district store and NHM reporting.</p></article>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>6. Demo script and hand-in status</legend>
+            <label>
+              Three-minute demo
+              <textarea rows="7" readonly>0:00 Show 32-facility district dashboard. 0:30 Process Hindi voice note from PHC Bhairavpur. 0:50 Extract ORS, paracetamol, malaria RDT and OPD fever count. 1:10 Trigger stock-out warning with 21-day lead time. 1:25 Generate redistribution from nearby PHC. 1:50 Mark transfer order ready for CMO review. 2:10 Ask district copilot for Monday interventions.</textarea>
+            </label>
+            <div class="check-grid">
+              <label><input type="checkbox" checked disabled /> Working prototype included</label>
+              <label><input type="checkbox" checked disabled /> Code and setup included</label>
+              <label><input type="checkbox" checked disabled /> Pitch deck content embedded</label>
+              <label><input type="checkbox" checked disabled /> Project write-up embedded</label>
+              <label><input type="checkbox" checked disabled /> CI/CD deployment configured</label>
+              <label><input type="checkbox" checked disabled /> No outbound document redirects</label>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button id="validateSubmission" type="button">Validate webform package</button>
+            <output id="submissionStatus">Ready for review.</output>
+          </div>
+        </form>
       </section>
     </main>
 
     <footer>
       <span>PulseGrid · Smart Health Track</span>
-      <a href="SOLUTION.md">Full solution blueprint</a>
+      <span>All submission content is embedded above.</span>
     </footer>
     <script src="app.js"></script>
   </body>

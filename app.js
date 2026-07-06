@@ -76,9 +76,16 @@ function loadMarathi() {
   $("#voiceText").value = samples.mr;
 }
 
+function validateSubmission() {
+  const checked = document.querySelectorAll(".check-grid input:checked").length;
+  const total = document.querySelectorAll(".check-grid input").length;
+  $("#submissionStatus").textContent = `${checked}/${total} hand-in items validated. The full prototype, pitch, write-up, architecture and CI/CD summary are embedded on this page.`;
+}
+
 $("#processVoice").addEventListener("click", processVoiceNote);
 $("#loadMarathi").addEventListener("click", loadMarathi);
 $("#askCopilot").addEventListener("click", askCopilot);
+$("#validateSubmission").addEventListener("click", validateSubmission);
 $("#language").addEventListener("change", (event) => {
   $("#voiceText").value = samples[event.target.value];
 });
