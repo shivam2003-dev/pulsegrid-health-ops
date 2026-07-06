@@ -6,53 +6,53 @@
     <title>Kisan Alert | Voice-first crop and water intelligence</title>
     <meta
       name="description"
-      content="Kisan Alert is a voice-first crop, water and RSK advisory system for small farmers in rural India."
+      content="Voice-first crop, water, dry-spell and RSK advisory system for small farmers in rural India."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar" aria-label="Product navigation">
-      <a class="brand" href="#demo" aria-label="Kisan Alert home">
+    <header class="topbar">
+      <a class="brand" href="#demo">
         <span class="brand-mark">KA</span>
         <span>
           <strong>Kisan Alert</strong>
           <small>Smart Water, Crop & Advisory System</small>
         </span>
       </a>
-      <nav>
+      <nav aria-label="Main navigation">
         <a href="#engine">Engine</a>
         <a href="#rsk">RSK loop</a>
         <a href="#build">48-hour build</a>
-        <a class="nav-brief" href="SOLUTION.md">Brief</a>
+        <a class="brief-link" href="SOLUTION.md">Brief</a>
       </nav>
     </header>
 
     <main>
-      <section id="demo" class="demo-shell" aria-labelledby="page-title">
-        <div class="demo-copy">
+      <section id="demo" class="hero-grid">
+        <div class="hero-copy">
           <p class="eyebrow">Code for Communities · Track 4</p>
-          <h1 id="page-title">A 30-second dialect voice decision for each farmer's plot.</h1>
+          <h1>A 30-second dialect voice decision for each farmer's plot.</h1>
           <p class="lead">
-            Kisan Alert combines Soil Health Card data, rainfall history, Sentinel-1/Sentinel-2 evidence, mandi prices,
-            and RSK expert validation into IVR, missed-call, WhatsApp voice, and SMS workflows.
+            Kisan Alert sits on top of Soil Health Card, IMD, satellite, mandi and RSK systems. It converts them into
+            missed-call IVR, WhatsApp voice, SMS, and expert follow-up for small farmers.
           </p>
-          <div class="channel-strip" aria-label="Access channels">
+          <div class="channel-strip">
             <span>Missed call</span>
             <span>IVR</span>
-            <span>SMS</span>
+            <span>SMS fallback</span>
             <span>WhatsApp voice</span>
             <span>RSK kiosk</span>
           </div>
-          <div class="primary-actions">
+          <div class="actions">
             <button id="startCall" class="button primary" type="button">Simulate Telugu IVR</button>
             <button id="raiseTicket" class="button secondary" type="button">Send low-confidence crop log</button>
           </div>
         </div>
 
         <section class="voice-console" aria-label="Voice advisory console">
-          <div class="console-header">
+          <div class="console-head">
             <div>
-              <p class="console-label">Incoming missed call</p>
+              <p class="label">Incoming missed call</p>
               <h2>Raju · Kothapalli · 2 acres</h2>
             </div>
             <span id="callState" class="status-pill">Ready</span>
@@ -61,106 +61,92 @@
             <p><strong>Farmer:</strong> Ee varsham lo ye pantalu veyali?</p>
             <p><strong>Kisan Alert:</strong> Press simulate to hear the plot-specific answer.</p>
           </div>
-          <div class="advice-sentence">
+          <div class="answer-box">
             <span>Voice answer</span>
             <p id="voiceAnswer">
               Raju garu, wait for the next effective rain. Red gram is safer than paddy because groundwater is deep and
               the 7-day dry-spell risk is high.
             </p>
           </div>
-          <div class="sms-preview">
+          <div class="sms-box">
             <span>SMS fallback</span>
-            <p id="smsText">Sow 1.5 acre red gram + 0.5 acre maize after rain. Avoid paddy this week. Risk saving ~Rs 3,800.</p>
+            <p id="smsText">
+              Sow 1.5 acre red gram + 0.5 acre maize after rain. Avoid paddy this week. Risk saving ~Rs 3,800.
+            </p>
           </div>
         </section>
       </section>
 
-      <section class="operations-grid" aria-label="Kisan Alert live evidence">
-        <article class="panel crop-panel" id="engine">
-          <div class="panel-heading">
+      <section class="grid" aria-label="Kisan Alert operating evidence">
+        <article id="engine" class="panel crop-panel">
+          <div class="panel-head">
             <p class="eyebrow">Crop risk portfolio</p>
             <h2>Recommendation Engine</h2>
           </div>
-          <div class="farmer-facts">
+          <div class="facts">
             <span>Low nitrogen</span>
             <span>pH 7.8</span>
             <span>Deep groundwater</span>
             <span>Rainfall -34%</span>
           </div>
-          <div class="portfolio-list">
-            <div class="portfolio-row safe">
-              <span class="rank">1</span>
+          <div class="portfolio">
+            <div class="crop-row">
+              <b>86</b>
               <div>
                 <strong>Red gram</strong>
-                <small>Safe crop · low water demand · MSP support</small>
+                <span>Safe crop · low water demand · MSP support</span>
               </div>
-              <b>86</b>
             </div>
-            <div class="portfolio-row balanced">
-              <span class="rank">2</span>
+            <div class="crop-row maize">
+              <b>71</b>
               <div>
                 <strong>Maize</strong>
-                <small>Balanced option · sow after effective rain</small>
+                <span>Balanced option · sow after effective rain</span>
               </div>
-              <b>71</b>
             </div>
-            <div class="portfolio-row avoid">
-              <span class="rank">!</span>
+            <div class="crop-row avoid">
+              <b>38</b>
               <div>
                 <strong>Paddy</strong>
-                <small>Avoid this week · water and seed-loss risk</small>
+                <span>Avoid this week · water and seed-loss risk</span>
               </div>
-              <b>38</b>
             </div>
           </div>
         </article>
 
         <article class="panel satellite-panel">
-          <div class="panel-heading">
+          <div class="panel-head">
             <p class="eyebrow">Monsoon radar sentinel</p>
             <h2>Satellite + Rainfall Evidence</h2>
           </div>
           <canvas id="satelliteCanvas" width="680" height="420" aria-label="Plot wetness and satellite evidence"></canvas>
           <div class="legend">
-            <span><i class="legend-red"></i> Low wetness</span>
-            <span><i class="legend-green"></i> Healthy field</span>
-            <span><i class="legend-blue"></i> Water body</span>
+            <span><i class="low"></i>Low wetness</span>
+            <span><i class="healthy"></i>Healthy field</span>
+            <span><i class="water"></i>Water body</span>
           </div>
         </article>
 
         <article class="panel alert-panel">
-          <div class="panel-heading">
+          <div class="panel-head">
             <p class="eyebrow">Dry-spell logic</p>
             <h2>Actionable Advisory</h2>
           </div>
-          <div class="risk-meter" aria-label="Dry spell risk 78 percent">
-            <div style="--risk: 78%"></div>
-          </div>
-          <div class="alert-copy">
-            <strong>78% dry-spell risk</strong>
-            <p>
-              No effective rain is forecast for 7 days. Germination-stage maize has high failure risk. Delay sowing
-              until the next 10 mm rain event.
-            </p>
-          </div>
-          <dl class="water-facts">
-            <div>
-              <dt>ET deficit</dt>
-              <dd>18 mm</dd>
-            </div>
-            <div>
-              <dt>Stage</dt>
-              <dd>Sowing</dd>
-            </div>
-            <div>
-              <dt>Saving</dt>
-              <dd>Rs 3,800</dd>
-            </div>
+          <div class="risk-meter"><span></span></div>
+          <h3>78% dry-spell risk</h3>
+          <p>
+            No effective rain is forecast for 7 days. Delay sowing until the next 10 mm rain event to avoid seed-loss
+            risk.
+          </p>
+          <dl class="stats">
+            <div><dt>ET deficit</dt><dd>18 mm</dd></div>
+            <div><dt>Stage</dt><dd>Sowing</dd></div>
+            <div><dt>Saving</dt><dd>Rs 3,800</dd></div>
           </dl>
         </article>
 
         <article id="rsk" class="panel rsk-panel">
-          <div class="panel-heading">
+          <div class="panel-head">
             <p class="eyebrow">Human-in-the-loop</p>
             <h2>RSK Expert Queue</h2>
           </div>
@@ -180,61 +166,25 @@
         </article>
       </section>
 
-      <section class="differentiators" aria-labelledby="diff-title">
-        <div class="section-heading">
-          <p class="eyebrow">Designed against generic hackathon apps</p>
-          <h2 id="diff-title">What makes it hard to copy</h2>
-        </div>
+      <section class="section">
+        <p class="eyebrow">Designed against generic hackathon apps</p>
+        <h2>What makes it hard to copy</h2>
         <div class="diff-grid">
-          <article>
-            <span>01</span>
-            <h3>Voice-first, not app-first</h3>
-            <p>Missed call and IVR are the primary path. SMS is fallback. WhatsApp photo/voice is optional.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Risk portfolio, not one crop</h3>
-            <p>The farmer gets safe, balanced, and high-return crop choices tied to water and rupee risk.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Sentinel-1 under clouds</h3>
-            <p>SAR wetness evidence keeps working during monsoon cloud cover when optical NDVI is blocked.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>RSK validation loop</h3>
-            <p>AI triages routine issues. Experts handle the uncertain 10% and create district early warnings.</p>
-          </article>
+          <article><span>01</span><h3>Voice-first</h3><p>Missed call and IVR are the main path. The app is optional.</p></article>
+          <article><span>02</span><h3>Risk portfolio</h3><p>Safe, balanced, and high-return crop choices replace one naive crop answer.</p></article>
+          <article><span>03</span><h3>Sentinel-1 evidence</h3><p>SAR wetness works during monsoon cloud cover when optical NDVI fails.</p></article>
+          <article><span>04</span><h3>RSK validation</h3><p>Experts handle uncertain cases and generate district pest early warnings.</p></article>
         </div>
       </section>
 
-      <section id="build" class="build-plan" aria-labelledby="build-title">
-        <div class="section-heading">
-          <p class="eyebrow">48-hour build</p>
-          <h2 id="build-title">Prototype only what judges can touch</h2>
-        </div>
+      <section id="build" class="section build-section">
+        <p class="eyebrow">48-hour build</p>
+        <h2>Prototype only what judges can touch</h2>
         <div class="timeline">
-          <div>
-            <span>0-8h</span>
-            <h3>Seed district data</h3>
-            <p>One district, three villages, paddy and red gram, Soil Health Card-style values, dry-spell forecast.</p>
-          </div>
-          <div>
-            <span>8-20h</span>
-            <h3>Build IVR + scoring</h3>
-            <p>Spring Boot or FastAPI endpoints, Exotel/Twilio webhook, Telugu/Hindi advisory templates.</p>
-          </div>
-          <div>
-            <span>20-36h</span>
-            <h3>RSK and satellite screens</h3>
-            <p>Ticket queue, confidence gate, satellite evidence panel, SMS/voice loop closure.</p>
-          </div>
-          <div>
-            <span>36-48h</span>
-            <h3>Demo hardening</h3>
-            <p>Pre-record voice fallback, rehearsed 3-minute script, judge Q&A, and offline-safe static backup.</p>
-          </div>
+          <article><span>0-8h</span><h3>Seed data</h3><p>One district, three villages, paddy and red gram.</p></article>
+          <article><span>8-20h</span><h3>IVR + scoring</h3><p>Webhook, Telugu/Hindi templates, crop portfolio score.</p></article>
+          <article><span>20-36h</span><h3>RSK screen</h3><p>Ticket queue, confidence gate, satellite evidence panel.</p></article>
+          <article><span>36-48h</span><h3>Demo hardening</h3><p>Voice fallback, 3-minute script, offline-safe static site.</p></article>
         </div>
       </section>
     </main>
