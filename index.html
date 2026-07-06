@@ -3,197 +3,213 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kisan Alert | Voice-first crop and water intelligence</title>
+    <title>PulseGrid | District Health Operations</title>
     <meta
       name="description"
-      content="Voice-first crop, water, dry-spell and RSK advisory system for small farmers in rural India."
+      content="Voice-first district health centre and supply chain operations prototype for PHCs and CHCs."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <a class="brand" href="#demo">
-        <span class="brand-mark">KA</span>
-        <span>
-          <strong>Kisan Alert</strong>
-          <small>Smart Water, Crop & Advisory System</small>
-        </span>
-      </a>
-      <nav aria-label="Main navigation">
-        <a href="#engine">Engine</a>
-        <a href="#rsk">RSK loop</a>
-        <a href="#build">48-hour build</a>
-        <a class="brief-link" href="SOLUTION.md">Brief</a>
-      </nav>
-    </header>
-
-    <main>
-      <section id="demo" class="hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Code for Communities · Track 4</p>
-          <h1>A 30-second dialect voice decision for each farmer's plot.</h1>
-          <p class="lead">
-            Kisan Alert sits on top of Soil Health Card, IMD, satellite, mandi and RSK systems. It converts them into
-            missed-call IVR, WhatsApp voice, SMS, and expert follow-up for small farmers.
-          </p>
-          <div class="channel-strip">
-            <span>Missed call</span>
-            <span>IVR</span>
-            <span>SMS fallback</span>
-            <span>WhatsApp voice</span>
-            <span>RSK kiosk</span>
-          </div>
-          <div class="actions">
-            <button id="startCall" class="button primary" type="button">Simulate Telugu IVR</button>
-            <button id="raiseTicket" class="button secondary" type="button">Send low-confidence crop log</button>
-          </div>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Code for Communities · Smart Health</p>
+          <h1>PulseGrid District Ops</h1>
         </div>
+        <div class="status-strip" aria-label="System status">
+          <span><strong>32</strong> centres</span>
+          <span><strong>17</strong> live signals</span>
+          <span class="risk-pill">4 urgent</span>
+        </div>
+      </header>
 
-        <section class="voice-console" aria-label="Voice advisory console">
-          <div class="console-head">
-            <div>
-              <p class="label">Incoming missed call</p>
-              <h2>Raju · Kothapalli · 2 acres</h2>
+      <main class="dashboard">
+        <aside class="side-panel" aria-label="District filters">
+          <div class="section-title">
+            <span>District</span>
+            <strong>Sehore Rural</strong>
+          </div>
+          <label class="field-label" for="language">Voice language</label>
+          <select id="language">
+            <option value="hi">Hindi</option>
+            <option value="mr">Marathi</option>
+          </select>
+
+          <div class="metric-stack">
+            <div class="metric">
+              <span>Stock-out risk</span>
+              <strong id="stockRisk">7 days</strong>
             </div>
-            <span id="callState" class="status-pill">Ready</span>
+            <div class="metric">
+              <span>District cover</span>
+              <strong>23 days</strong>
+            </div>
+            <div class="metric">
+              <span>Data freshness</span>
+              <strong id="freshness">82%</strong>
+            </div>
           </div>
-          <div id="callTranscript" class="transcript" aria-live="polite">
-            <p><strong>Farmer:</strong> Ee varsham lo ye pantalu veyali?</p>
-            <p><strong>Kisan Alert:</strong> Press simulate to hear the plot-specific answer.</p>
+
+          <div class="legend">
+            <span><i class="dot critical"></i>Critical</span>
+            <span><i class="dot watch"></i>Watch</span>
+            <span><i class="dot stable"></i>Stable</span>
           </div>
-          <div class="answer-box">
-            <span>Voice answer</span>
-            <p id="voiceAnswer">
-              Raju garu, wait for the next effective rain. Red gram is safer than paddy because groundwater is deep and
-              the 7-day dry-spell risk is high.
-            </p>
+        </aside>
+
+        <section class="map-panel" aria-label="District facility graph">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Live operating twin</p>
+              <h2>PHC/CHC supply graph</h2>
+            </div>
+            <button id="simulateDay" class="icon-button" type="button" title="Advance one day">
+              +1d
+            </button>
           </div>
-          <div class="sms-box">
-            <span>SMS fallback</span>
-            <p id="smsText">
-              Sow 1.5 acre red gram + 0.5 acre maize after rain. Avoid paddy this week. Risk saving ~Rs 3,800.
-            </p>
+          <svg class="district-map" viewBox="0 0 720 430" role="img" aria-label="Facility graph map">
+            <defs>
+              <linearGradient id="routeGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+                <stop offset="0%" stop-color="#6a994e" />
+                <stop offset="100%" stop-color="#bc4749" />
+              </linearGradient>
+            </defs>
+            <path class="river" d="M48 326 C142 270, 214 340, 318 286 S530 240, 676 296" />
+            <path class="route muted" d="M122 112 L294 170 L438 114 L582 164" />
+            <path class="route active-route" d="M294 170 L438 252" />
+            <path class="route muted" d="M188 310 L294 170 L438 252 L594 328" />
+            <g class="node stable-node" transform="translate(122 112)">
+              <circle r="19"></circle><text y="5">PHC 03</text>
+            </g>
+            <g class="node donor-node" transform="translate(294 170)">
+              <circle r="24"></circle><text y="5">PHC 12</text>
+            </g>
+            <g class="node critical-node pulse" transform="translate(438 252)">
+              <circle r="28"></circle><text y="5">PHC 07</text>
+            </g>
+            <g class="node watch-node" transform="translate(438 114)">
+              <circle r="22"></circle><text y="5">CHC 01</text>
+            </g>
+            <g class="node stable-node" transform="translate(582 164)">
+              <circle r="18"></circle><text y="5">PHC 18</text>
+            </g>
+            <g class="node watch-node" transform="translate(188 310)">
+              <circle r="20"></circle><text y="5">CHC 02</text>
+            </g>
+            <g class="node stable-node" transform="translate(594 328)">
+              <circle r="18"></circle><text y="5">PHC 21</text>
+            </g>
+            <text class="map-label" x="344" y="215">ORS transfer path · 21 km</text>
+          </svg>
+        </section>
+
+        <section class="voice-panel" aria-label="Voice stock update">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Passive capture</p>
+              <h2>WhatsApp voice intake</h2>
+            </div>
+            <span class="confidence" id="voiceConfidence">LLM confidence 91%</span>
+          </div>
+          <textarea id="voiceText" rows="5">PHC Bhairavpur mein ORS 18 packet bache hain, paracetamol 500 ki 10 strip hain, malaria RDT khatam hai. Aaj OPD 118 tha aur bukhar ke 31 patient aaye.</textarea>
+          <div class="button-row">
+            <button id="processVoice" type="button">Process voice note</button>
+            <button id="loadMarathi" class="secondary" type="button">Marathi sample</button>
+          </div>
+          <div class="extraction-grid" id="extractionGrid">
+            <div><span>Facility</span><strong>PHC Bhairavpur</strong></div>
+            <div><span>Stock</span><strong>Pending</strong></div>
+            <div><span>Footfall</span><strong>Pending</strong></div>
+            <div><span>Tests</span><strong>Pending</strong></div>
           </div>
         </section>
-      </section>
 
-      <section class="grid" aria-label="Kisan Alert operating evidence">
-        <article id="engine" class="panel crop-panel">
-          <div class="panel-head">
-            <p class="eyebrow">Crop risk portfolio</p>
-            <h2>Recommendation Engine</h2>
-          </div>
-          <div class="facts">
-            <span>Low nitrogen</span>
-            <span>pH 7.8</span>
-            <span>Deep groundwater</span>
-            <span>Rainfall -34%</span>
-          </div>
-          <div class="portfolio">
-            <div class="crop-row">
-              <b>86</b>
-              <div>
-                <strong>Red gram</strong>
-                <span>Safe crop · low water demand · MSP support</span>
-              </div>
+        <section class="risk-panel" aria-label="Stock-out warnings">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Lead-time aware</p>
+              <h2>Stock-out queue</h2>
             </div>
-            <div class="crop-row maize">
-              <b>71</b>
-              <div>
-                <strong>Maize</strong>
-                <span>Balanced option · sow after effective rain</span>
-              </div>
-            </div>
-            <div class="crop-row avoid">
-              <b>38</b>
-              <div>
-                <strong>Paddy</strong>
-                <span>Avoid this week · water and seed-loss risk</span>
-              </div>
-            </div>
+            <span class="risk-pill" id="queueCount">4 open</span>
           </div>
-        </article>
+          <div class="warning-list" id="warningList">
+            <article class="warning critical-border">
+              <div>
+                <strong>ORS · PHC Bhairavpur</strong>
+                <span>6 days cover · 21 day lead time</span>
+              </div>
+              <b>Critical</b>
+            </article>
+            <article class="warning watch-border">
+              <div>
+                <strong>Hb strips · CHC Ichhawar</strong>
+                <span>11 days cover · ANC load rising</span>
+              </div>
+              <b>Watch</b>
+            </article>
+            <article class="warning watch-border">
+              <div>
+                <strong>Amoxicillin · PHC Bilkisganj</strong>
+                <span>13 days cover · dengue season</span>
+              </div>
+              <b>Watch</b>
+            </article>
+          </div>
+        </section>
 
-        <article class="panel satellite-panel">
-          <div class="panel-head">
-            <p class="eyebrow">Monsoon radar sentinel</p>
-            <h2>Satellite + Rainfall Evidence</h2>
+        <section class="order-panel" aria-label="Redistribution recommendation">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Graph optimization</p>
+              <h2>Draft transfer order</h2>
+            </div>
+            <span class="confidence">min-cost flow</span>
           </div>
-          <canvas id="satelliteCanvas" width="680" height="420" aria-label="Plot wetness and satellite evidence"></canvas>
-          <div class="legend">
-            <span><i class="low"></i>Low wetness</span>
-            <span><i class="healthy"></i>Healthy field</span>
-            <span><i class="water"></i>Water body</span>
+          <div class="transfer-card" id="transferCard">
+            <div class="transfer-line">
+              <span>From</span><strong>PHC Ashta Road</strong>
+              <span>To</span><strong>PHC Bhairavpur</strong>
+            </div>
+            <div class="transfer-line">
+              <span>Move</span><strong>80 ORS packets</strong>
+              <span>Vehicle</span><strong>Block van</strong>
+            </div>
+            <p>Sender remains at 24 days cover. Receiver stock-out avoided for 18 days. Batch expires in 78 days, so FEFO priority is satisfied.</p>
+            <button id="approveOrder" type="button">Mark ready for CMO review</button>
           </div>
-        </article>
+        </section>
 
-        <article class="panel alert-panel">
-          <div class="panel-head">
-            <p class="eyebrow">Dry-spell logic</p>
-            <h2>Actionable Advisory</h2>
+        <section class="score-panel" aria-label="Facility health score">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Fair scoring</p>
+              <h2>Centre health score</h2>
+            </div>
+            <strong class="score" id="healthScore">61</strong>
           </div>
-          <div class="risk-meter"><span></span></div>
-          <h3>78% dry-spell risk</h3>
-          <p>
-            No effective rain is forecast for 7 days. Delay sowing until the next 10 mm rain event to avoid seed-loss
-            risk.
+          <div class="score-bars">
+            <label>Stock resilience <span>42</span><progress max="100" value="42"></progress></label>
+            <label>Service continuity <span>78</span><progress max="100" value="78"></progress></label>
+            <label>Test readiness <span>39</span><progress max="100" value="39"></progress></label>
+            <label>Upstream dependency <span>High</span><progress max="100" value="68"></progress></label>
+          </div>
+        </section>
+
+        <section class="copilot-panel" aria-label="District health copilot">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">CMO copilot</p>
+              <h2>Intervention brief</h2>
+            </div>
+            <button id="askCopilot" class="secondary" type="button">Ask</button>
+          </div>
+          <p id="copilotAnswer">
+            Top intervention: PHC Bhairavpur needs ORS and malaria RDT action before Monday. The stock issue is district-solvable through redistribution; the test issue requires district store confirmation.
           </p>
-          <dl class="stats">
-            <div><dt>ET deficit</dt><dd>18 mm</dd></div>
-            <div><dt>Stage</dt><dd>Sowing</dd></div>
-            <div><dt>Saving</dt><dd>Rs 3,800</dd></div>
-          </dl>
-        </article>
-
-        <article id="rsk" class="panel rsk-panel">
-          <div class="panel-head">
-            <p class="eyebrow">Human-in-the-loop</p>
-            <h2>RSK Expert Queue</h2>
-          </div>
-          <div id="ticketQueue" class="ticket-list" aria-live="polite">
-            <div class="ticket urgent">
-              <span>Open</span>
-              <strong>Yellow leaves · Red gram · Flowering</strong>
-              <p>AI confidence 42%. Attach photo, voice transcript, rainfall, soil card, and plot history.</p>
-            </div>
-            <div class="ticket">
-              <span>Cluster</span>
-              <strong>5 nearby pest reports</strong>
-              <p>Possible early warning around Kothapalli and Ramapuram within 5 km.</p>
-            </div>
-          </div>
-          <button id="closeTicket" class="button compact" type="button">RSK closes ticket</button>
-        </article>
-      </section>
-
-      <section class="section">
-        <p class="eyebrow">Designed against generic hackathon apps</p>
-        <h2>What makes it hard to copy</h2>
-        <div class="diff-grid">
-          <article><span>01</span><h3>Voice-first</h3><p>Missed call and IVR are the main path. The app is optional.</p></article>
-          <article><span>02</span><h3>Risk portfolio</h3><p>Safe, balanced, and high-return crop choices replace one naive crop answer.</p></article>
-          <article><span>03</span><h3>Sentinel-1 evidence</h3><p>SAR wetness works during monsoon cloud cover when optical NDVI fails.</p></article>
-          <article><span>04</span><h3>RSK validation</h3><p>Experts handle uncertain cases and generate district pest early warnings.</p></article>
-        </div>
-      </section>
-
-      <section id="build" class="section build-section">
-        <p class="eyebrow">48-hour build</p>
-        <h2>Prototype only what judges can touch</h2>
-        <div class="timeline">
-          <article><span>0-8h</span><h3>Seed data</h3><p>One district, three villages, paddy and red gram.</p></article>
-          <article><span>8-20h</span><h3>IVR + scoring</h3><p>Webhook, Telugu/Hindi templates, crop portfolio score.</p></article>
-          <article><span>20-36h</span><h3>RSK screen</h3><p>Ticket queue, confidence gate, satellite evidence panel.</p></article>
-          <article><span>36-48h</span><h3>Demo hardening</h3><p>Voice fallback, 3-minute script, offline-safe static site.</p></article>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>Kisan Alert · Built for Code for Communities Track 4</p>
-      <a href="SOLUTION.md">Read full technical brief</a>
-    </footer>
-
+        </section>
+      </main>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

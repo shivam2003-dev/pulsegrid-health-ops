@@ -1,6 +1,6 @@
-# Kisan Alert
+# PulseGrid District Ops
 
-Voice-first crop, water, dry-spell and RSK advisory prototype for Code for Communities Track 4.
+Voice-first district health centre and supply chain management prototype for Code for Communities Smart Health.
 
 ## Run
 
@@ -16,11 +16,14 @@ Then visit:
 http://localhost:4174
 ```
 
+If that port is occupied, use any free port, for example `python3 -m http.server 4184`.
+
 ## Demo Flow
 
-1. Click `Simulate Telugu IVR`.
-2. Watch the plot-specific crop portfolio and SMS fallback update.
-3. Click `Send low-confidence crop log`.
-4. Click `RSK closes ticket` to show expert loop closure.
+1. Click `Process voice note`.
+2. Watch the PHC stock extraction update the risk queue.
+3. Review the generated redistribution recommendation.
+4. Click `Mark ready for CMO review`.
+5. Click `Ask` in the copilot panel.
 
 The full product blueprint is in `SOLUTION.md`.

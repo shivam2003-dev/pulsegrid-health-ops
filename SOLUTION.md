@@ -1,299 +1,220 @@
-# Kisan Alert - Smart Water, Crop & Advisory System
+# PulseGrid: Voice-First District Health Operations Platform
 
-## What Every Team Will Build
+## Obvious Solutions To Avoid
 
-1. A crop recommendation model using random forest on soil NPK, rainfall, and temperature.
-2. A plant disease CNN app with a chatbot.
-3. Weather API alerts that say "rain tomorrow" or "irrigate today."
-4. A multilingual mobile app with a microphone button.
-5. A generic officer dashboard with farmers, crops, mandi prices, and tickets.
+1. Inventory dashboard + LSTM demand forecast + SMS stock-out alerts.
+2. PHC mobile app where pharmacist/nurse fills daily stock, beds, doctor attendance, lab status.
+3. IoT smart shelves/RFID/barcodes for every medicine.
+4. Patient queue/token system + bed availability dashboard.
+5. Admin chatbot over monthly HMIS reports.
 
-Kisan Alert is designed against these defaults on four axes:
+PulseGrid is designed against these on four axes: passive capture instead of forms, district-level optimization instead of dashboards, explainable risk attribution instead of ranking/shaming, and integration with existing government rails instead of a parallel MIS.
 
-- Voice-first access instead of app-first access.
-- Plot-stage advice instead of district-level generic advice.
-- Crop risk portfolio and economics instead of one "best crop."
-- RSK/KVK human validation instead of black-box AI.
+## Novel Solution Concepts
 
-## Why This Is Not Just Kisan Suvidha, mKisan, or KCC
+### 1. Passive District Health Ops Twin
 
-Kisan Suvidha already provides weather, market prices, plant protection, agro advisories, Soil Health Card links, and related services. mKisan already sends text and voice advisories. Kisan Call Centres already answer farmer questions in local languages. Soil Health Card already gives nutrient status and fertilizer recommendations.
+A WhatsApp/IVR/photo-first system that builds a live operational twin of all PHCs/CHCs, then solves stock redistribution as a graph optimization problem.
 
-So Kisan Alert should not be pitched as another agriculture information app. It is the missing personalization and triage layer on top of these systems:
+Unfair advantage: it treats dusty registers, voice notes, e-Aushadhi exports, and OPD sheets as first-class data sources, so adoption does not depend on new data entry.
 
-- KCC tells a farmer what is generally right.
-- Kisan Alert tells the farmer what is right for this plot, this crop stage, this week.
-- RSK experts validate uncertain or high-risk cases and close the loop by voice.
+### 2. Disease-Season Demand Radar
 
-## Novel Concepts
+Forecast medicine, test, and bed demand using seasonal disease calendars, rainfall/weather, school exams, market days, melas, harvest migration, and local outbreak signals.
 
-### 1. Kisan Risk Portfolio Advisor
+Unfair advantage: it predicts demand before consumption appears in stock registers.
 
-Instead of recommending one crop, recommend a crop mix:
+### 3. Non-Surveillance Facility Reliability Engine
 
-- Safe crop.
-- Balanced crop.
-- High-return crop.
-- Optional fallback crop if sowing is delayed.
+Detect likely doctor absence, test downtime, and service collapse from indirect service fingerprints: OPD volume, prescription cadence, eSanjeevani sessions, lab test mix, and patient diversions.
 
-The model uses soil, rainfall reliability, groundwater depth, price volatility, MSP protection, crop duration, and farmer risk preference.
+Unfair advantage: it flags operational gaps without installing attendance surveillance, making it easier to adopt politically and socially.
 
-Unfair advantage: judges will remember "crop choice like a financial portfolio," especially because small farmers cannot afford a single failed bet.
+Strongest concept: PulseGrid, with concepts 2 and 3 embedded.
 
-### 2. Monsoon Radar Dry-Spell Sentinel
+## Full Blueprint
 
-Use Sentinel-1 SAR because it can see through monsoon clouds, Sentinel-2 NDVI/NDWI when clear, CHIRPS/IMD rainfall history, and forecast rainfall probability to detect sowing failure, crop stress, and dry spells before damage is visible.
+### Data Capture Layer
 
-Unfair advantage: most teams will use only weather APIs; Kisan Alert shows satellite evidence.
+Hard constraint: everything must work through WhatsApp/IVR/PWA on a Rs 6,000 Android phone, compressed images, store-and-forward sync, and SMS fallback. Demo languages: Hindi and Marathi.
 
-### 3. RSK Triage Network
+| Stream | Near-zero-effort capture | Fallback | Notes |
+| --- | --- | --- | --- |
+| Stock | Pharmacist sends voice note such as "ORS 18 packet, paracetamol 10 strip, malaria RDT khatam." LLM extracts item, quantity, unit, confidence. | Photo of stock register with OCR. | Import e-Aushadhi/DVDMS stock, indents, issues, and batches where available. |
+| Footfall | Daily OPD register photo, eSanjeevani session count, or 20-second IVR summary. | HMIS monthly aggregate import. | Store aggregate counts only: OPD, fever, ANC, diarrhoea, NCD, referrals. |
+| Beds | CHC bed board photo or IVR: "male ward full, female ward 2 khali, delivery room 1." | Manual district-call-center update. | PHCs should be treated as observation capacity, not full inpatient bed systems. |
+| Attendance | Use existing attendance systems where present. Otherwise infer service continuity from prescription cadence, OPD patterns, eSanjeevani sessions, and signed register activity. | MO verification for suspicious gaps. | Avoid camera/biometric surveillance in the hackathon pitch. |
+| Test availability | Weekly lab shelf photo plus voice note for Hb strips, malaria/dengue RDT, pregnancy kits, reagents. | Lab register photo OCR. | Link test stock to syndrome footfall, especially fever and ANC. |
 
-Farmers send voice/photo logs by missed call, WhatsApp voice, or RSK kiosk. AI handles high-confidence routine cases. Low-confidence or high-risk cases become RSK tickets with crop, location, weather, soil, satellite trend, and transcript attached.
+### Forecasting
 
-Unfair advantage: the byproduct is a district pest/disease early-warning map generated from real farmer complaints.
+| Problem | Recommended model | Why |
+| --- | --- | --- |
+| Medicine demand | LightGBM/CatBoost quantile model where history exists; Croston/TSB for intermittent demand; seasonal naive for sparse items. | Government facility data is sparse, censored by stock-outs, and uneven across items. |
+| Footfall | Seasonal baseline + gradient boosting with weather/event features. | Captures weekly market-day and seasonal disease patterns without overfitting. |
+| Bed occupancy | Queue/occupancy model using arrivals, average length of stay, delivery load, and referral pressure. | More explainable than black-box sequence models. |
+| Test demand | Tied forecast from syndrome footfall. Fever drives malaria/dengue/RDT demand; ANC drives Hb/pregnancy/urine tests. | Tests are service-linked, not independent retail demand. |
+| Cold-start facilities | Borrow from matched facilities by type, catchment, rural/tribal profile, IPHS norm, and district HMIS average. | Handles PHCs with little digital history. |
 
-## Chosen Blueprint
+The LLM is used for parsing messy language and explaining anomalies. It should not be the primary numerical forecaster.
 
-Kisan Alert combines the crop risk portfolio, monsoon sentinel, and RSK loop into one voice-first system.
+### Stock-Out Early Warning
 
-One-line product:
-
-> Kisan Alert turns government data, satellites, and RSK experts into a 30-second dialect voice decision for each farmer's plot.
-
-## Crop Recommendation Engine
-
-### Inputs
-
-- Farmer profile: village, plot location, land size, irrigation source, phone type, risk preference.
-- Soil: Soil Health Card N/P/K, pH, EC, organic carbon; fallback to SoilGrids if no card exists.
-- Remote sensing: Sentinel-2 NDVI/NDWI time series for crop vigor and fallow history; Sentinel-1 SAR for wetness/stress under clouds.
-- Rainfall: CHIRPS climatology and IMD block-level forecast.
-- Water: CGWB groundwater depth trend, local borewell reports, optional soil-moisture sensor.
-- Economics: Agmarknet mandi modal prices, MSP list, input cost assumptions, distance to mandi.
-- Crop rules: sowing windows, crop duration, soil suitability, water demand, pest risk.
-
-### Model Choice
-
-For the 48-hour build, use a rules-plus-scoring engine rather than pretending to train a reliable model.
-
-Score:
+Core logic:
 
 ```text
-crop_score =
-  soil_suitability
-  * rainfall_reliability
-  * water_feasibility
-  * expected_margin
-  * market_protection
-  - risk_penalty
+days_on_hand = usable_stock / forecast_daily_demand_p75
+reorder_point = demand_during_lead_time + safety_stock
 ```
 
-Risk penalty includes groundwater stress, rainfall variance, price volatility, crop duration risk, and forecast dry-spell probability.
+Lead times must reflect government procurement:
 
-The output is a ranked crop portfolio:
+- PHC to district store issue: 2-7 days if stock is available.
+- Indent approval and block movement: 7-21 days.
+- State procurement or replenishment: 30-90 days.
 
-- Safe option.
-- Balanced option.
-- High-return option.
-- Crop to avoid.
+Escalation:
 
-### Farmer-Facing Output
+1. Pharmacist: verify stock/photo.
+2. Medical Officer: approve indent or transfer request.
+3. District store: allocate stock.
+4. CMO/DPM: intervene if unresolved beyond SLA.
 
-Do not show a probability table. Give one voice sentence with decision, reason, and action:
+### Redistribution Engine
 
-> Raju garu, your red soil has low nitrogen and groundwater is deep. For your 2 acres, sow 1.5 acres red gram and 0.5 acre maize after the next rain. Do not sow paddy now; water risk is high and seed loss risk is about Rs 3,800.
+Model the district as a graph.
 
-## Advisory And Dry-Spell Alerts
+- Nodes: PHCs, CHCs, district warehouse.
+- Edges: road distance/time, transport cost, cold-chain availability.
+- Lots: item, quantity, batch, expiry, storage condition.
 
-### Forecast Sources
-
-- IMD agromet and block-level forecast where available.
-- GFS as open fallback.
-- ECMWF-open if accessible.
-- CHIRPS or IMD rainfall history for anomaly checks.
-- Optional local rain gauge or soil-moisture sensor from RSK/FPO.
-
-### Agronomic Dry-Spell Definition
-
-Do not define dry spell generically. Define it by crop stage:
-
-- Sowing/germination: no effective rain above 10 mm for 5-7 days after sowing.
-- Vegetative: forecast ET deficit above 50 percent of crop-stage water need for 7 days.
-- Flowering: stricter threshold because yield loss is high.
-
-Crop-stage water need is simplified from FAO-56:
+Objective:
 
 ```text
-ETc = ETo * Kc
+minimize stockout_penalty
+       + transport_cost
+       + expiry_waste
+       + cold_chain_violation_penalty
+       + equity_penalty
 ```
 
-For the demo, hardcode Kc curves for paddy and red gram.
+Constraints:
 
-### Alert Logic
+- Sender cannot fall below buffer stock.
+- Receiver cannot exceed storage capacity.
+- FEFO: earliest-expiry-first movement.
+- Cold-chain items only on valid routes.
+- Emergency reserve at CHCs.
+- Same program/accounting pool unless district override is recorded.
 
-Avoid crying wolf:
+Output: a draft transfer order with item, quantity, source, destination, batch/expiry, route, vehicle, and human approval status.
 
-- Alert only if at least two signals agree: forecast deficit, recent rainfall anomaly, satellite/sensor stress.
-- Suppress repeated alerts for 72 hours unless severity changes.
-- Include rupee impact, not only weather probability.
-- Send only actionable alerts: delay sowing, protective irrigation, delay urea split, scout pest, call RSK.
+### Facility Scoring
 
-Example:
+PulseGrid uses a transparent Health Centre Health Score:
 
-> Rain chance is low for 7 days. If you sow maize today, seed failure risk is high. Wait until July 12; expected saving is about Rs 3,500 per acre.
+- Stock resilience.
+- Service continuity.
+- Footfall pressure.
+- Bed pressure.
+- Test readiness.
+- Data freshness/confidence.
+- Referral burden.
+- Upstream dependency.
 
-## Photo And Voice Crop Diagnosis
+To avoid unfair punishment, every risk is tagged:
 
-Be honest: plant disease models often fail on real field photos because of lighting, mixed symptoms, overlapping nutrient/water/pest stress, local varieties, and poor focus.
+- Controllable: no stock update, unverified closure, local stock mismanagement.
+- Shared/systemic: district warehouse stock-out, sanctioned staff vacancy, road/flood disruption, epidemic surge.
+- Uncontrollable: procurement failure, official doctor vacancy, cold-chain breakdown outside facility.
 
-### Confidence-Gated Pipeline
+Gaming resistance comes from cross-signals: voice note vs register photo vs e-Aushadhi issue vs OPD prescription demand.
 
-1. Farmer calls IVR or sends WhatsApp voice/photo.
-2. ASR transcript extracts crop, symptom, crop stage, location, and urgency.
-3. Image model classifies broad bucket: pest, fungal disease, nutrient deficiency, water stress, or unknown.
-4. High confidence and low risk: instant voice advice.
-5. Medium confidence: ask one voice follow-up.
-6. Low confidence or high-risk crop stage: create RSK ticket.
-7. RSK correction becomes labeled training data.
+### Integration And Compliance
 
-## RSK Integration
-
-### Expert Dashboard
-
-Each ticket includes:
-
-- Farmer phone and village.
-- Crop and sowing date.
-- Soil card summary.
-- Last 14-day rainfall.
-- Satellite NDVI/SAR trend.
-- Photo and voice transcript.
-- AI hypothesis and confidence.
-
-Priority order:
-
-1. Flowering-stage crop.
-2. Multiple nearby reports.
-3. Low-confidence AI.
-4. Larger affected acreage.
-
-### Loop Closure
-
-The RSK expert closes the ticket with a diagnosis and action. The system sends the answer back by IVR callback and SMS. If similar cases cluster in a 5 km radius, nearby farmers receive a preventive alert. This creates a district pest/disease early-warning map as a byproduct.
-
-## Language Layer
-
-Demo languages: Telugu and Hindi.
-
-Use:
-
-- Bhashini for ASR, TTS, and translation where API access works.
-- AI4Bharat IndicWhisper and IndicTrans2 as fallback.
-- Dialect phrase dictionaries for key rural terms.
-
-Do not model everything. Hardcode approved advisory templates and use AI only for intent extraction and slot filling:
-
-- Crop.
-- Symptom.
-- Village.
-- Stage.
-- Urgency.
-
-Example Telugu phrases:
-
-- "neellu levu" -> water shortage.
-- "varsham ledu" -> no rain.
-- "aaku pasupu" -> yellow leaves.
-- "mandhu emi?" -> what medicine/input?
-
-## Access Constraints
-
-Primary channel:
-
-- Missed call -> IVR callback.
-
-Secondary channels:
-
-- SMS summary.
-- WhatsApp voice/photo for smartphone users.
-- RSK kiosk or neighbor phone for farmers without phones.
-
-The farmer does not need to install an app or own a smartphone.
+- ABDM: use Health Facility Registry IDs and ABDM-aligned facility metadata. ABHA is not needed because this is aggregate operations, not patient records.
+- e-Aushadhi/DVDMS: read stock, indents, issues, and batches; write draft indents only after human approval.
+- HMIS: reconcile monthly aggregate service data.
+- eSanjeevani: import assisted teleconsult counts where available.
+- IPHS 2022: use PHC/CHC norms for service readiness.
+- Essential medicines: seed item master from NHSRC/NHM essential medicine lists.
+- DPDP Act 2023: store aggregate operational data only; redact names from register images; delete raw images after extraction; log purpose, retention, and access.
 
 ## 48-Hour Hackathon Build Plan
 
-### Build For Real
+### Build
 
-- Static demo website with IVR simulator, plot recommendation, satellite evidence, dry-spell alert, and RSK dashboard.
-- Spring Boot API for farmer, plot, recommendation, alert, and ticket endpoints.
-- Python/FastAPI agronomy engine for crop scoring and dry-spell calculation.
-- PostgreSQL/PostGIS for farmer plots and village data.
-- Twilio or Exotel webhook for IVR/SMS.
-- Bhashini or prerecorded Telugu/Hindi voice for demo reliability.
-- React or static JS dashboard for RSK queue.
+- Synthetic district: 30 PHCs, 2 CHCs, 1 district store, 40 medicines/tests, 180 days history.
+- Web dashboard: map, facility score, stock-out queue, redistribution recommendations, copilot.
+- Spring Boot API + PostgreSQL/PostGIS if building full-stack.
+- Python FastAPI ML service for OCR/parser, forecasts, anomaly scoring, and OR-Tools min-cost flow.
+- WhatsApp-like demo panel: upload Hindi/Marathi audio or type simulated voice transcript.
+- OCR with Tesseract/EasyOCR.
+- LLM extraction from noisy voice/OCR text into structured stock events.
+- Forecast demo using LightGBM or quantile baseline.
+- OR-Tools redistribution engine.
 
-### Mock Honestly
+### Mock
 
-- One district.
-- Three villages.
-- Two crops: paddy and red gram.
-- Synthetic but realistic Soil Health Card data.
-- Precomputed Sentinel-1/Sentinel-2 style values.
-- Precomputed rainfall anomaly and mandi prices.
-- Disease classifier simulated with confidence gating.
+- Real e-Aushadhi/HMIS/ABDM APIs.
+- Official WhatsApp Business approval.
+- Real procurement order dispatch.
+- Biometric attendance.
 
-### Suggested Demo Data
+### Suggested Stack
 
-- District: Anantapuramu-style dryland setting.
-- Villages: Kothapalli, Ramapuram, Chennapuram.
-- Crops: Paddy, red gram.
-- Farmer: Raju, 2 acres, red soil, low nitrogen, deep groundwater.
-- Current risk: 7-day dry spell forecast and low plot wetness.
+- Frontend: Next.js or static HTML/CSS/JS for fastest demo.
+- Backend: Java Spring Boot for APIs, Python FastAPI for forecasting/optimization.
+- Data: PostgreSQL + PostGIS.
+- Optimization: Google OR-Tools.
+- OCR: Tesseract/EasyOCR.
+- Deployment: Docker Compose locally; Cloud Run/EC2 only if a public demo URL is required.
 
-## 3-Minute Demo Script
+### Open Data Seeds
 
-1. Show farmer profile: Raju, Village A, 2 acres, low nitrogen, deep groundwater.
-2. Live wow moment: trigger IVR and ask in Telugu, "Ee varsham lo ye pantalu veyali?"
-3. System replies in Telugu with a plot-specific crop portfolio and satellite-backed reason.
-4. Dashboard shows rainfall deficit, Sentinel-1 wetness low, paddy risk high.
-5. Send crop photo/voice. The model marks low confidence and creates an RSK ticket.
-6. RSK expert closes the ticket and the farmer receives voice/SMS advice.
-7. District map shows emerging pest/disease cluster.
+- HMIS public reports: https://hmis.mohfw.gov.in/
+- NHM MIS and Free Drugs material: https://nhm.gov.in/
+- IPHS 2022: https://nhsrcindia.org/IPHS2022/iphs-2022-guidelines
+- Essential medicines lists: https://qps.nhsrcindia.org/free-drugs-service-initiatives/essential-medicines-list
+- OpenStreetMap distances.
+- Synthetic weather/event calendar.
 
-## Judge Questions
+### 3-Minute Demo Script
 
-### Why will a farmer trust this over the local input dealer?
+0:00: "This district has 32 facilities. Red means stock-out risk before procurement can catch up."
 
-Because the advice names the farmer's village, crop stage, soil issue, rainfall risk, and rupee impact, and carries RSK/KVK validation. Dealers sell inputs. Kisan Alert can also say, "do not buy seed this week" or "do not spray pesticide yet."
+0:30: Upload Hindi voice note: "PHC Bhairavpur mein ORS 18 packet, paracetamol 10 strip, malaria RDT khatam."
 
-### How is this different from Kisan Suvidha or KCC?
+0:50: System extracts stock, confidence, item mapping, and updates facility twin.
 
-Kisan Suvidha is an information app and KCC is a human helpline. Kisan Alert is a personalization and triage layer that uses Soil Health Card, IMD, satellite, mandi, and crop-stage data to generate plot-specific advice, then escalates hard cases to RSK experts.
+1:10: Wow moment: alert appears: "ORS stock-out in 6 days; procurement lead time 21 days."
 
-### Is this feasible in 48 hours?
+1:25: Redistribution engine recommends transfer from nearby PHC with 46 days cover and near-expiry stock.
 
-The full agronomy platform is not. A credible hackathon prototype is feasible: one district, two crops, synthetic data, IVR voice flow, ranked recommendation engine, dry-spell alert logic, RSK ticket dashboard, and one satellite-evidence screen.
+1:50: One-click draft transfer order generated for district store.
 
-## Sustainability Path
+2:10: Ask copilot: "CMO ko batao kaunse centres Monday se pehle intervene karne hain."
 
-- State agriculture department pilot through RSKs.
-- FPO partnerships for onboarding and trust.
-- NABARD and state innovation grants for public-good deployment.
-- Crop insurance risk alerts.
-- FPO advisory subscriptions.
-- Agri-input partnerships only with a strict rule: sponsored products cannot override RSK-validated agronomic advice.
+2:35: Copilot answers with 3 facilities, reasons, confidence, and whether the issue is local or upstream.
 
-## Reference Sources
+## One-Line Pitch
 
-- Kisan Suvidha: https://kisansuvidha.gov.in/
-- mKisan: https://mkisan.gov.in/
-- Kisan Call Centre: https://www.manage.gov.in/kcc/aboutkcc.asp
-- Soil Health Card: https://www.soilhealth.dac.gov.in/
-- IMD Agromet: https://mausam.imd.gov.in/responsive/agromet_adv_ser_state_current.php
-- Bhashini: https://bhashini.gov.in/
-- AI4Bharat IndicTrans2: https://github.com/AI4Bharat/IndicTrans2
-- Agmarknet: https://agmarknet.gov.in/
-- Sentinel-1: https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-1
-- Sentinel-2: https://dataspace.copernicus.eu/data-collections/copernicus-sentinel-missions/sentinel-2
-- CHIRPS: https://www.chc.ucsb.edu/data/chirps
-- FAO-56: https://www.fao.org/4/x0490e/x0490e00.htm
+PulseGrid is a voice-first district health operating system that turns PHC registers and WhatsApp updates into live forecasts, fair facility scores, and actionable medicine redistribution orders.
+
+## Likely Judge Questions
+
+### How is this different from e-Aushadhi or HMIS?
+
+e-Aushadhi/DVDMS is mainly the transaction backbone for drug inventory and warehouses; HMIS is aggregate reporting. PulseGrid is the intelligence and action layer: passive capture, dirty-data reconciliation, early warnings, demand forecasting, and district-wide redistribution optimization.
+
+### How do you get PHC staff to use it?
+
+Do not ask them to use a new MIS. Let them send what they already have: voice note, register photo, IVR response, or existing exports. The immediate benefit goes back to them: fewer angry patients, faster replenishment, and less blame because the system shows whether the failure is local or upstream.
+
+### Is AI reliable enough for government stock decisions?
+
+AI should recommend, not auto-transfer. Every prediction has confidence, source evidence, and a human approval step. The optimizer creates draft orders; the district store or MO approves. For low-confidence OCR or voice extraction, the system asks for one-tap verification.
+
+## Post-Hackathon Sustainability
+
+Start with an NHM district pilot as a decision-support layer over e-Aushadhi/HMIS, not a replacement. Sign a district administration/CMO MoU for 30-50 facilities, prove reduction in stock-out days and emergency indents, then package it for state health department procurement as AI decision support for Free Drugs Service Initiative and IPHS readiness monitoring.

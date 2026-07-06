@@ -1,142 +1,90 @@
-const transcript = document.querySelector("#callTranscript");
-const callState = document.querySelector("#callState");
-const voiceAnswer = document.querySelector("#voiceAnswer");
-const smsText = document.querySelector("#smsText");
-const ticketQueue = document.querySelector("#ticketQueue");
+const state = {
+  day: 0,
+  processed: false,
+};
 
-const teluguAdvice =
-  "రాజు గారు, మీ భూమిలో నత్రజని తక్కువగా ఉంది, బోరు నీరు లోతుగా ఉంది. ఈ వారం వరి వేయకండి. తర్వాత మంచి వాన పడిన తర్వాత ఒకటిన్నర ఎకరాల్లో కంది, అర ఎకరంలో మొక్కజొన్న వేయండి.";
+const samples = {
+  hi: "PHC Bhairavpur mein ORS 18 packet bache hain, paracetamol 500 ki 10 strip hain, malaria RDT khatam hai. Aaj OPD 118 tha aur bukhar ke 31 patient aaye.",
+  mr: "PHC Bhairavpur madhe ORS 18 packet urle aahet, paracetamol 500 chi 10 strip aahet, malaria RDT sampale aahe. Aaj OPD 118 hota ani tapache 31 patient aale.",
+};
 
-const englishAdvice =
-  "Raju garu, nitrogen is low and groundwater is deep. Avoid paddy this week. After the next effective rain, sow 1.5 acres red gram and 0.5 acre maize.";
+const $ = (selector) => document.querySelector(selector);
 
-function setCallState(label, mode) {
-  callState.textContent = label;
-  callState.className = `status-pill ${mode || ""}`.trim();
-}
+function processVoiceNote() {
+  state.processed = true;
+  $("#voiceConfidence").textContent = "LLM confidence 94%";
+  $("#stockRisk").textContent = "6 days";
+  $("#freshness").textContent = "91%";
+  $("#queueCount").textContent = "5 open";
+  $("#healthScore").textContent = "58";
 
-function speakAdvice() {
-  if (!("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(teluguAdvice);
-  utterance.lang = "te-IN";
-  utterance.rate = 0.92;
-  window.speechSynthesis.speak(utterance);
-}
-
-document.querySelector("#startCall").addEventListener("click", () => {
-  setCallState("Calling back", "active");
-  transcript.innerHTML = `
-    <p><strong>IVR:</strong> Namaskaram. Mee bhoomi salahaa kosam oka prashna adugandi.</p>
-    <p><strong>Farmer:</strong> Ee varsham lo ye pantalu veyali?</p>
-    <p><strong>ASR intent:</strong> Crop choice · Kothapalli · Kharif sowing · Risk low.</p>
+  $("#extractionGrid").innerHTML = `
+    <div><span>Facility</span><strong>PHC Bhairavpur</strong></div>
+    <div><span>Stock</span><strong>ORS 18 · PCM 10 · RDT 0</strong></div>
+    <div><span>Footfall</span><strong>OPD 118 · fever 31</strong></div>
+    <div><span>Tests</span><strong>Malaria RDT stock-out</strong></div>
   `;
 
-  window.setTimeout(() => {
-    setCallState("Answered", "done");
-    voiceAnswer.textContent = englishAdvice;
-    smsText.textContent = "Avoid paddy this week. Sow red gram 1.5 acre + maize 0.5 acre after 10 mm rain. Est. saving Rs 3,800.";
-    transcript.insertAdjacentHTML("beforeend", `<p><strong>Kisan Alert:</strong> ${teluguAdvice}</p>`);
-    speakAdvice();
-  }, 900);
-});
-
-document.querySelector("#raiseTicket").addEventListener("click", () => {
-  ticketQueue.insertAdjacentHTML(
+  $("#warningList").insertAdjacentHTML(
     "afterbegin",
-    `<div class="ticket urgent">
-      <span>New</span>
-      <strong>Voice/photo log · Confidence 39%</strong>
-      <p>Farmer says "aaku pasupu." AI cannot separate nitrogen stress from early pest damage. Sent to RSK with plot history.</p>
-    </div>`,
+    `<article class="warning critical-border">
+      <div>
+        <strong>Malaria RDT · PHC Bhairavpur</strong>
+        <span>0 stock · fever cases 31 today</span>
+      </div>
+      <b>Critical</b>
+    </article>`
   );
-});
 
-document.querySelector("#closeTicket").addEventListener("click", () => {
-  setCallState("RSK follow-up sent", "done");
-  voiceAnswer.textContent =
-    "RSK expert confirmed nutrient stress, not pest. Apply the recommended nitrogen split after rain; do not spray pesticide today.";
-  smsText.textContent = "RSK: Nutrient stress likely. Wait for rain, then apply N split. No pesticide today.";
-  ticketQueue.insertAdjacentHTML(
-    "afterbegin",
-    `<div class="ticket">
-      <span>Closed</span>
-      <strong>RSK advice delivered by IVR + SMS</strong>
-      <p>Correction saved as training label and added to district stress map.</p>
-    </div>`,
-  );
-});
-
-function drawSatellite() {
-  const canvas = document.querySelector("#satelliteCanvas");
-  const ctx = canvas.getContext("2d");
-  const w = canvas.width;
-  const h = canvas.height;
-
-  ctx.fillStyle = "#bfd0b4";
-  ctx.fillRect(0, 0, w, h);
-
-  for (let i = 0; i < 120; i += 1) {
-    ctx.fillStyle = i % 3 === 0 ? "rgba(83, 126, 78, 0.22)" : "rgba(210, 171, 101, 0.2)";
-    ctx.beginPath();
-    ctx.ellipse(Math.random() * w, Math.random() * h, 16 + Math.random() * 38, 5 + Math.random() * 15, Math.random() * 3, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  const fields = [
-    { x: 54, y: 60, width: 145, height: 100, color: "#5f995e", label: "healthy" },
-    { x: 218, y: 54, width: 168, height: 110, color: "#cc7e55", label: "Raju plot" },
-    { x: 410, y: 78, width: 178, height: 90, color: "#7aa96d", label: "standing crop" },
-    { x: 72, y: 204, width: 180, height: 124, color: "#c58f55", label: "low wetness" },
-    { x: 278, y: 210, width: 145, height: 116, color: "#5b945f", label: "red gram" },
-    { x: 455, y: 222, width: 142, height: 105, color: "#d1a96a", label: "fallow" },
-  ];
-
-  fields.forEach((field) => {
-    ctx.save();
-    ctx.translate(field.x + field.width / 2, field.y + field.height / 2);
-    ctx.rotate((Math.random() - 0.5) * 0.2);
-    ctx.fillStyle = field.color;
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.72)";
-    ctx.lineWidth = 3;
-    ctx.fillRect(-field.width / 2, -field.height / 2, field.width, field.height);
-    ctx.strokeRect(-field.width / 2, -field.height / 2, field.width, field.height);
-    ctx.restore();
-  });
-
-  ctx.fillStyle = "#4d8cb7";
-  ctx.beginPath();
-  ctx.moveTo(0, 358);
-  ctx.bezierCurveTo(100, 324, 180, 392, 300, 354);
-  ctx.bezierCurveTo(430, 314, 510, 364, 680, 332);
-  ctx.lineTo(680, 420);
-  ctx.lineTo(0, 420);
-  ctx.closePath();
-  ctx.fill();
-
-  ctx.strokeStyle = "#f7f5ee";
-  ctx.lineWidth = 5;
-  ctx.setLineDash([12, 10]);
-  ctx.beginPath();
-  ctx.moveTo(10, 190);
-  ctx.bezierCurveTo(152, 170, 276, 184, 386, 184);
-  ctx.bezierCurveTo(510, 184, 580, 200, 666, 188);
-  ctx.stroke();
-  ctx.setLineDash([]);
-
-  ctx.fillStyle = "#17201b";
-  ctx.font = "700 18px Inter, sans-serif";
-  ctx.fillText("Sentinel-1 wetness low", 224, 42);
-
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(234, 88, 126, 34);
-  ctx.fillStyle = "#17201b";
-  ctx.font = "700 14px Inter, sans-serif";
-  ctx.fillText("Raju plot", 252, 110);
-
-  ctx.strokeStyle = "#b6403b";
-  ctx.lineWidth = 5;
-  ctx.strokeRect(216, 52, 172, 114);
+  $("#transferCard").innerHTML = `
+    <div class="transfer-line">
+      <span>From</span><strong>PHC Ashta Road</strong>
+      <span>To</span><strong>PHC Bhairavpur</strong>
+    </div>
+    <div class="transfer-line">
+      <span>Move</span><strong>80 ORS packets + 25 RDT kits</strong>
+      <span>Vehicle</span><strong>Block van</strong>
+    </div>
+    <p>Sender remains above buffer. Receiver avoids ORS stock-out for 18 days and restores fever testing today. Route cost is lower than district warehouse dispatch.</p>
+    <button id="approveOrder" type="button">Mark ready for CMO review</button>
+  `;
+  $("#approveOrder").addEventListener("click", approveOrder);
 }
 
-drawSatellite();
+function approveOrder() {
+  $("#transferCard").classList.add("ready");
+  $("#transferCard").innerHTML = `
+    <div class="transfer-line">
+      <span>Status</span><strong>Ready for CMO review</strong>
+      <span>Order ID</span><strong>TO-24-071</strong>
+    </div>
+    <p>Draft transfer order created with item, quantity, source, destination, expiry priority, and transport route. Human approval is still required before dispatch.</p>
+  `;
+}
+
+function askCopilot() {
+  const answer = state.processed
+    ? "Priority one: approve TO-24-071 from PHC Ashta Road to PHC Bhairavpur today. The ORS issue is solvable inside the district; malaria RDT stock-out needs district store release because fever footfall is 2.4x the 14-day baseline. Do not penalize the facility score as upstream stock was unavailable for 9 days."
+    : "Top intervention: PHC Bhairavpur needs ORS and malaria RDT action before Monday. The stock issue is district-solvable through redistribution; the test issue requires district store confirmation.";
+  $("#copilotAnswer").textContent = answer;
+}
+
+function advanceDay() {
+  state.day += 1;
+  const currentRisk = Math.max(1, 6 - state.day);
+  $("#stockRisk").textContent = `${currentRisk} days`;
+  $("#simulateDay").textContent = `+${state.day + 1}d`;
+}
+
+function loadMarathi() {
+  $("#language").value = "mr";
+  $("#voiceText").value = samples.mr;
+}
+
+$("#processVoice").addEventListener("click", processVoiceNote);
+$("#askCopilot").addEventListener("click", askCopilot);
+$("#simulateDay").addEventListener("click", advanceDay);
+$("#loadMarathi").addEventListener("click", loadMarathi);
+$("#language").addEventListener("change", (event) => {
+  $("#voiceText").value = samples[event.target.value];
+});
