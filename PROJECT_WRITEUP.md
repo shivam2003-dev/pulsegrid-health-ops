@@ -127,17 +127,6 @@ PulseGrid does not need patient-level records for this use case.
 - The design aligns with the DPDP Act 2023 by minimizing personal data collection.
 - ABDM alignment is through facility metadata and health facility identifiers, not patient records.
 
-## Evaluation Fit
-
-| Criterion | PulseGrid response |
-| --- | --- |
-| Problem-Solution Fit | Directly covers the five required streams plus warnings, forecasts, redistribution and intervention flags. |
-| AI / Technical Execution | Uses OCR, multilingual extraction, forecasting, anomaly detection and min-cost flow optimization. |
-| Deployability & Scalability | Works on low-end phones and integrates with existing government systems instead of replacing them. |
-| Inclusivity & Accessibility | Voice-first, multilingual, low-literacy and low-connectivity friendly. |
-| Impact Potential | Targets stock-out reduction, faster transfers, fewer avoidable referrals and fairer facility escalation. |
-| Presentation & Clarity | Website, pitch deck, write-up and demo flow are all included. |
-
 ## 48-Hour Build Scope
 
 Built:

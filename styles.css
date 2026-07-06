@@ -209,7 +209,7 @@ button {
 .challenge-grid article,
 .architecture-grid article,
 .submit-grid article,
-.rubric-list article {
+.submission-note {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
@@ -343,7 +343,6 @@ button {
 .challenge-grid p,
 .architecture-grid p,
 .submit-grid p,
-.rubric-list p,
 .copilot-panel p,
 .transfer-card p {
   color: var(--muted);
@@ -503,38 +502,6 @@ progress::-webkit-progress-value {
   color: var(--green);
 }
 
-.rubric-list {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.rubric-list article {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 1rem;
-  align-items: center;
-  padding: 1rem;
-  box-shadow: none;
-}
-
-.rubric-list strong {
-  color: var(--blue);
-  font-size: 2rem;
-}
-
-.rubric-list article:nth-child(2) strong,
-.rubric-list article:nth-child(6) strong {
-  color: var(--pink);
-}
-
-.rubric-list article:nth-child(3) strong {
-  color: var(--green);
-}
-
-.rubric-list article:nth-child(4) strong {
-  color: var(--amber);
-}
-
 .submit-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -603,10 +570,6 @@ footer a {
 
   .ops-metrics,
   .extract-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .rubric-list article {
     grid-template-columns: 1fr;
   }
 
