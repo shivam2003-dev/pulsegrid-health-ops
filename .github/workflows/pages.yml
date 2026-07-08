@@ -54,7 +54,7 @@ jobs:
           test -f RESEARCH_SURVEY.md
           test -f phase.md
           test -f README.md
-          test -f SOLUTION.md
+          test -f solution.md
           test -f PITCH_DECK.md
           test -f PROJECT_WRITEUP.md
 

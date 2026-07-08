@@ -14,7 +14,7 @@ https://arogyagrid.shivam2003.com/
 - Code repository: public GitHub repo with setup and CI/CD
 - Pitch deck: `PITCH_DECK.md`
 - Project write-up: `PROJECT_WRITEUP.md`
-- Full blueprint: `SOLUTION.md`
+- Full blueprint: `solution.md`
 - Selected-round roadmap: `phase.md`
 - Research survey: `RESEARCH_SURVEY.md`
 
