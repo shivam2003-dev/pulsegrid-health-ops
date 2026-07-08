@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: us-east4-docker.pkg.dev/project-72558650-faf6-4529-a05/people-priority/arogyagrid:gcp-20260708051949-9eda27b-amd64
+          image: us-east4-docker.pkg.dev/project-72558650-faf6-4529-a05/people-priority/arogyagrid:gcp-20260708134756-4983daa-amd64
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
