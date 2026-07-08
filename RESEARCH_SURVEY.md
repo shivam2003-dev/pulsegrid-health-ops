@@ -1,4 +1,4 @@
-# PulseGrid Research Survey
+# ArogyaGrid Research Survey
 
 ## Research Question
 
@@ -8,7 +8,7 @@ What is the best practical design for an AI-driven PHC/CHC health-centre and sup
 
 ### 1. Stock-outs are a system problem, not only a facility problem
 
-Systematic literature on community-level medicine stock-outs in LMICs points to recurring upstream and last-mile causes: forecasting gaps, delayed replenishment, fragmented logistics, poor visibility and weak accountability loops. The product implication is that PulseGrid must not only alert the PHC; it must identify whether the failure is local, district-store, procurement or demand-surge related.
+Systematic literature on community-level medicine stock-outs in LMICs points to recurring upstream and last-mile causes: forecasting gaps, delayed replenishment, fragmented logistics, poor visibility and weak accountability loops. The product implication is that ArogyaGrid must not only alert the PHC; it must identify whether the failure is local, district-store, procurement or demand-surge related.
 
 Design implication:
 
@@ -23,7 +23,7 @@ Sources:
 
 ### 2. Digital supply-chain tools help only when they fit workflow reality
 
-LMIS and last-mile supply-chain work repeatedly shows that visibility is valuable, but parallel reporting systems fail when they increase workload. PulseGrid therefore treats existing registers, voice notes, IVR and e-Aushadhi/DVDMS exports as primary capture channels rather than demanding another daily form.
+LMIS and last-mile supply-chain work repeatedly shows that visibility is valuable, but parallel reporting systems fail when they increase workload. ArogyaGrid therefore treats existing registers, voice notes, IVR and e-Aushadhi/DVDMS exports as primary capture channels rather than demanding another daily form.
 
 Design implication:
 
@@ -70,7 +70,7 @@ Sources:
 
 ### 5. Indian deployment must align with existing public-health rails
 
-PulseGrid should be a decision-support layer over existing Indian systems, not a replacement. DVDMS/e-Aushadhi already targets drug stock and warehouse workflows. HMIS is the official health indicator reporting portal. ABDM/HFR provides facility identity context. IPHS 2022 provides service-readiness norms.
+ArogyaGrid should be a decision-support layer over existing Indian systems, not a replacement. DVDMS/e-Aushadhi already targets drug stock and warehouse workflows. HMIS is the official health indicator reporting portal. ABDM/HFR provides facility identity context. IPHS 2022 provides service-readiness norms.
 
 Design implication:
 
@@ -113,4 +113,4 @@ The best solution is not a dashboard, chatbot or generic forecasting model. The 
 7. Privacy-by-minimization.
 8. Human approval and auditability.
 
-That is the direction implemented in PulseGrid.
+That is the direction implemented in ArogyaGrid.

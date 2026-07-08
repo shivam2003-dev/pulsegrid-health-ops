@@ -26,7 +26,7 @@ const on = (selector, event, handler) => {
 const data = window.PULSEGRID || {};
 const tourSteps = {
   "index.html": [
-    { target: ".hero", title: "Start with the district problem", body: "This first screen frames PulseGrid as a live PHC/CHC operations layer: stock, footfall, beds, attendance, tests and district action in one system." },
+    { target: ".hero", title: "Start with the district problem", body: "This first screen frames ArogyaGrid as a live PHC/CHC operations layer: stock, footfall, beds, attendance, tests and district action in one system." },
     { target: ".hero-actions", title: "Run the demo path", body: "Use AI Intake for the Hindi or Marathi voice-note flow, or open the dashboard to see the CMO view of risks and transfers." },
     { target: ".prototype-grid", title: "Follow the operating loop", body: "These cards show the end-to-end workflow judges should remember: passive capture, lead-time warning, redistribution recommendation and intervention brief." },
     { target: "#webform", title: "Everything stays on this site", body: "The submission content is embedded as a webform-style page, so the project write-up, prototype and architecture are visible without redirecting to GitHub." },
@@ -38,7 +38,7 @@ const tourSteps = {
     { target: ".copilot-panel", title: "Use the CMO-ready brief", body: "The copilot summarizes the evidence and separates local execution issues from upstream shortages so centres are not unfairly blamed." },
   ],
   "intake.html": [
-    { target: ".voice-panel", title: "Capture without new form filling", body: "This is the adoption-critical flow: a PHC worker sends a Hindi or Marathi update as voice/text, and PulseGrid extracts operational signals." },
+    { target: ".voice-panel", title: "Capture without new form filling", body: "This is the adoption-critical flow: a PHC worker sends a Hindi or Marathi update as voice/text, and ArogyaGrid extracts operational signals." },
     { target: "#processVoice", title: "Turn speech into facility data", body: "Click Process to simulate LLM extraction of stock, footfall, bed, attendance and test availability updates from one low-friction message." },
     { target: "#aiTrace", title: "Inspect the AI trace", body: "The trace shows what was extracted, what was flagged as anomalous and why no patient-level PII is needed for this use case." },
     { target: "#transferCard", title: "End with a human-approved action", body: "The flow produces a draft transfer recommendation and escalation path; the system recommends, but district staff approve." },
@@ -53,7 +53,7 @@ const tourSteps = {
   ],
   "forecasts.html": [
     { target: ".forecast-main", title: "Forecast what procurement must cover", body: "The forecast is built around government lead times, stock-out censoring and seasonal disease signals, not only last week's consumption." },
-    { target: ".forecast-layout", title: "Use simple models where data is weak", body: "PulseGrid chooses quantile boosting, seasonal baselines or Croston/TSB depending on data quality, so cold-start PHCs still get usable warnings." },
+    { target: ".forecast-layout", title: "Use simple models where data is weak", body: "ArogyaGrid chooses quantile boosting, seasonal baselines or Croston/TSB depending on data quality, so cold-start PHCs still get usable warnings." },
   ],
   "facilities.html": [
     { target: ".score-panel", title: "Score centres without hiding causes", body: "The score breaks down stock, service continuity, beds, tests and signal freshness so the district sees the exact weak point." },
@@ -311,7 +311,7 @@ function buildTour() {
     overlay.classList.remove("open");
     start.hidden = false;
     clearHighlights();
-    window.localStorage.setItem("pulsegridTourSeen", "true");
+    window.localStorage.setItem("arogyagridTourSeen", "true");
     if (lastFocusedElement && lastFocusedElement.focus) lastFocusedElement.focus();
   }
 

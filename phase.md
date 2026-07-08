@@ -1,4 +1,4 @@
-# PulseGrid Selected-Round Build Plan
+# ArogyaGrid Selected-Round Build Plan
 
 ## Goal
 

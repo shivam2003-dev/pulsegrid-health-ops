@@ -2,7 +2,7 @@
   "name": "pulsegrid-health-ops",
   "version": "1.0.0",
   "private": true,
-  "description": "Static PulseGrid PHC/CHC health operations prototype",
+  "description": "Static ArogyaGrid PHC/CHC health operations prototype",
   "scripts": {
     "check": "node --check app.js",
     "test:site": "node scripts/test-site.mjs"

@@ -1,4 +1,4 @@
-# PulseGrid Project Write-Up
+# ArogyaGrid Project Write-Up
 
 ## Problem
 
@@ -6,7 +6,7 @@ Primary Health Centres and Community Health Centres are expected to provide reli
 
 ## Proposed Solution
 
-PulseGrid is a multilingual AI platform for real-time health-centre management. It builds a live district operations twin across PHCs and CHCs by passively capturing five operational streams:
+ArogyaGrid is a multilingual AI platform for real-time health-centre management. It builds a live district operations twin across PHCs and CHCs by passively capturing five operational streams:
 
 1. Stock.
 2. Patient footfall.
@@ -23,7 +23,7 @@ It then generates:
 
 ## Why This Is Practical
 
-The design starts from the real adoption constraint: PHC staff will not do new data entry. PulseGrid uses zero-friction capture:
+The design starts from the real adoption constraint: PHC staff will not do new data entry. ArogyaGrid uses zero-friction capture:
 
 - WhatsApp voice notes in Hindi and regional languages.
 - Photos of existing stock, OPD, bed and lab registers.
@@ -118,7 +118,7 @@ Constraints:
 
 ## Privacy And Compliance
 
-PulseGrid does not need patient-level records for this use case.
+ArogyaGrid does not need patient-level records for this use case.
 
 - No ABHA ID is required.
 - No patient names are stored.

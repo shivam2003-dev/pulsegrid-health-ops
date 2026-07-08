@@ -1,10 +1,10 @@
-# PulseGrid Pitch Deck
+# ArogyaGrid Pitch Deck
 
 ## Slide 1: Title
 
-PulseGrid: Voice-first AI command centre for district PHC/CHC operations.
+ArogyaGrid: Voice-first AI command centre for district PHC/CHC operations.
 
-One-line pitch: PulseGrid turns PHC registers and WhatsApp updates into live forecasts, fair facility scores and actionable medicine redistribution orders.
+One-line pitch: ArogyaGrid turns PHC registers and WhatsApp updates into live forecasts, fair facility scores and actionable medicine redistribution orders.
 
 ## Slide 2: Problem
 
@@ -14,7 +14,7 @@ PHCs and CHCs face recurring stock-outs, unmanaged footfall, bed pressure, unpre
 
 The real failure mode is not model accuracy. It is data entry. PHC staff will not maintain one more app.
 
-PulseGrid avoids that by using:
+ArogyaGrid avoids that by using:
 
 - WhatsApp voice notes in Hindi and regional languages.
 - Photos of existing stock, OPD, bed and lab registers.
@@ -23,7 +23,7 @@ PulseGrid avoids that by using:
 
 ## Slide 4: Solution
 
-PulseGrid creates a live district health operations twin:
+ArogyaGrid creates a live district health operations twin:
 
 - Stock monitoring.
 - Patient footfall.
@@ -79,7 +79,7 @@ Ops layer:
 
 ## Slide 8: Why It Is Different
 
-Generic teams will submit dashboards and SMS alerts. PulseGrid is different because:
+Generic teams will submit dashboards and SMS alerts. ArogyaGrid is different because:
 
 - It is passive capture first, not app-data-entry first.
 - It optimizes across a district graph, not one facility at a time.

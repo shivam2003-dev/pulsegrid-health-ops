@@ -1,4 +1,4 @@
-# PulseGrid: Voice-First District Health Operations Platform
+# ArogyaGrid: Voice-First District Health Operations Platform
 
 ## Obvious Solutions To Avoid
 
@@ -8,7 +8,7 @@
 4. Patient queue/token system + bed availability dashboard.
 5. Admin chatbot over monthly HMIS reports.
 
-PulseGrid is designed against these on four axes: passive capture instead of forms, district-level optimization instead of dashboards, explainable risk attribution instead of ranking/shaming, and integration with existing government rails instead of a parallel MIS.
+ArogyaGrid is designed against these on four axes: passive capture instead of forms, district-level optimization instead of dashboards, explainable risk attribution instead of ranking/shaming, and integration with existing government rails instead of a parallel MIS.
 
 ## Novel Solution Concepts
 
@@ -30,7 +30,7 @@ Detect likely doctor absence, test downtime, and service collapse from indirect 
 
 Unfair advantage: it flags operational gaps without installing attendance surveillance, making it easier to adopt politically and socially.
 
-Strongest concept: PulseGrid, with concepts 2 and 3 embedded.
+Strongest concept: ArogyaGrid, with concepts 2 and 3 embedded.
 
 ## Full Blueprint
 
@@ -111,7 +111,7 @@ Output: a draft transfer order with item, quantity, source, destination, batch/e
 
 ### Facility Scoring
 
-PulseGrid uses a transparent Health Centre Health Score:
+ArogyaGrid uses a transparent Health Centre Health Score:
 
 - Stock resilience.
 - Service continuity.
@@ -199,13 +199,13 @@ Gaming resistance comes from cross-signals: voice note vs register photo vs e-Au
 
 ## One-Line Pitch
 
-PulseGrid is a voice-first district health operating system that turns PHC registers and WhatsApp updates into live forecasts, fair facility scores, and actionable medicine redistribution orders.
+ArogyaGrid is a voice-first district health operating system that turns PHC registers and WhatsApp updates into live forecasts, fair facility scores, and actionable medicine redistribution orders.
 
 ## Likely Judge Questions
 
 ### How is this different from e-Aushadhi or HMIS?
 
-e-Aushadhi/DVDMS is mainly the transaction backbone for drug inventory and warehouses; HMIS is aggregate reporting. PulseGrid is the intelligence and action layer: passive capture, dirty-data reconciliation, early warnings, demand forecasting, and district-wide redistribution optimization.
+e-Aushadhi/DVDMS is mainly the transaction backbone for drug inventory and warehouses; HMIS is aggregate reporting. ArogyaGrid is the intelligence and action layer: passive capture, dirty-data reconciliation, early warnings, demand forecasting, and district-wide redistribution optimization.
 
 ### How do you get PHC staff to use it?
 

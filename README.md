@@ -1,11 +1,11 @@
-# PulseGrid District Ops
+# ArogyaGrid District Ops
 
-PulseGrid is a multilingual AI platform for real-time PHC/CHC operations: stock monitoring, patient footfall, bed availability, doctor attendance, test availability, stock-out warnings, demand forecasting, redistribution recommendations and district intervention flags.
+ArogyaGrid is a multilingual AI platform for real-time PHC/CHC operations: stock monitoring, patient footfall, bed availability, doctor attendance, test availability, stock-out warnings, demand forecasting, redistribution recommendations and district intervention flags.
 
 Live site:
 
 ```text
-https://shivam2003-dev.github.io/pulsegrid-health-ops/
+https://arogyagrid.shivam2003.com/
 ```
 
 ## Submission Package
